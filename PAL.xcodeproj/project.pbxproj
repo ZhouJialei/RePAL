@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1636E8691AD2CB450083E355 /* homePage.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E8681AD2CB450083E355 /* homePage.png */; };
+		1636E86C1AD2CD4C0083E355 /* timeLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E86B1AD2CD4C0083E355 /* timeLine.png */; };
+		1636E86F1AD2CDD10083E355 /* contactView.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E86E1AD2CDD10083E355 /* contactView.png */; };
+		1636E8721AD2CE850083E355 /* personalView.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E8711AD2CE850083E355 /* personalView.png */; };
+		1636E8801AD2D3200083E355 /* math.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E87F1AD2D3200083E355 /* math.png */; };
+		1636E8821AD2D4560083E355 /* chinese.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E8811AD2D4560083E355 /* chinese.png */; };
+		1636E8841AD2D4BC0083E355 /* English.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E8831AD2D4BC0083E355 /* English.png */; };
+		1636E8861AD2D51C0083E355 /* chemistry.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E8851AD2D51B0083E355 /* chemistry.png */; };
+		1636E8881AD2D5560083E355 /* biology.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E8871AD2D5560083E355 /* biology.png */; };
+		1636E88A1AD2D5B20083E355 /* physics.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E8891AD2D5B20083E355 /* physics.png */; };
+		1636E88C1AD2D6CC0083E355 /* geography.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E88B1AD2D6CC0083E355 /* geography.png */; };
+		1636E88E1AD2D7120083E355 /* category.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E88D1AD2D7120083E355 /* category.png */; };
 		1653E1BF1ACA977B001ACCBF /* YDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1653E1BE1ACA977B001ACCBF /* YDAppDelegate.m */; };
 		1653E1C21ACD0B4D001ACCBF /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653E1C11ACD0B4D001ACCBF /* Address.swift */; };
 		16A2BAF01ACA5AF60063A1B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A2BAEF1ACA5AF60063A1B2 /* Main.storyboard */; };
@@ -231,6 +243,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1636E8681AD2CB450083E355 /* homePage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homePage.png; sourceTree = "<group>"; };
+		1636E86B1AD2CD4C0083E355 /* timeLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeLine.png; sourceTree = "<group>"; };
+		1636E86E1AD2CDD10083E355 /* contactView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contactView.png; sourceTree = "<group>"; };
+		1636E8711AD2CE850083E355 /* personalView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personalView.png; sourceTree = "<group>"; };
+		1636E87F1AD2D3200083E355 /* math.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = math.png; sourceTree = "<group>"; };
+		1636E8811AD2D4560083E355 /* chinese.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chinese.png; sourceTree = "<group>"; };
+		1636E8831AD2D4BC0083E355 /* English.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = English.png; sourceTree = "<group>"; };
+		1636E8851AD2D51B0083E355 /* chemistry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chemistry.png; sourceTree = "<group>"; };
+		1636E8871AD2D5560083E355 /* biology.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = biology.png; sourceTree = "<group>"; };
+		1636E8891AD2D5B20083E355 /* physics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = physics.png; sourceTree = "<group>"; };
+		1636E88B1AD2D6CC0083E355 /* geography.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geography.png; sourceTree = "<group>"; };
+		1636E88D1AD2D7120083E355 /* category.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = category.png; sourceTree = "<group>"; };
 		1653E1BD1ACA977B001ACCBF /* YDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDAppDelegate.h; sourceTree = "<group>"; };
 		1653E1BE1ACA977B001ACCBF /* YDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDAppDelegate.m; sourceTree = "<group>"; };
 		1653E1C11ACD0B4D001ACCBF /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -645,6 +669,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1636E8621AD2C8860083E355 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				1636E8701AD2CE6B0083E355 /* personalViewController */,
+				1636E86D1AD2CDBE0083E355 /* ContactViewController */,
+				1636E86A1AD2CD310083E355 /* timeViewController */,
+				1636E8631AD2C8A30083E355 /* homePageController */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+		1636E8631AD2C8A30083E355 /* homePageController */ = {
+			isa = PBXGroup;
+			children = (
+				1636E88D1AD2D7120083E355 /* category.png */,
+				1636E88B1AD2D6CC0083E355 /* geography.png */,
+				1636E8891AD2D5B20083E355 /* physics.png */,
+				1636E8871AD2D5560083E355 /* biology.png */,
+				1636E8851AD2D51B0083E355 /* chemistry.png */,
+				1636E8831AD2D4BC0083E355 /* English.png */,
+				1636E8811AD2D4560083E355 /* chinese.png */,
+				1636E87F1AD2D3200083E355 /* math.png */,
+				1636E8681AD2CB450083E355 /* homePage.png */,
+			);
+			name = homePageController;
+			sourceTree = "<group>";
+		};
+		1636E86A1AD2CD310083E355 /* timeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1636E86B1AD2CD4C0083E355 /* timeLine.png */,
+			);
+			name = timeViewController;
+			sourceTree = "<group>";
+		};
+		1636E86D1AD2CDBE0083E355 /* ContactViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1636E86E1AD2CDD10083E355 /* contactView.png */,
+			);
+			name = ContactViewController;
+			sourceTree = "<group>";
+		};
+		1636E8701AD2CE6B0083E355 /* personalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1636E8711AD2CE850083E355 /* personalView.png */,
+			);
+			name = personalViewController;
+			sourceTree = "<group>";
+		};
 		1653E1C01ACD0B22001ACCBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,6 +784,7 @@
 				16A2BB0E1ACA5B370063A1B2 /* ScrollViewsResources */,
 				1653E1BD1ACA977B001ACCBF /* YDAppDelegate.h */,
 				1653E1BE1ACA977B001ACCBF /* YDAppDelegate.m */,
+				1636E8621AD2C8860083E355 /* image */,
 				16A2BB141ACA5ECD0063A1B2 /* LaunchScreen.xib */,
 				16A2BAEF1ACA5AF60063A1B2 /* Main.storyboard */,
 				16D552C51AC9A46A00745B93 /* Images.xcassets */,
@@ -1826,11 +1902,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1636E8861AD2D51C0083E355 /* chemistry.png in Resources */,
 				16D5553A1AC9AB3400745B93 /* Icon_2x.png in Resources */,
 				16A2BB171ACA600D0063A1B2 /* welcome.png in Resources */,
 				16D555361AC9AB0B00745B93 /* groupicon.png in Resources */,
 				16D554DA1AC9A5AD00745B93 /* build-libidn.sh in Resources */,
 				16D555351AC9AB0B00745B93 /* contacts@2x.png in Resources */,
+				1636E88C1AD2D6CC0083E355 /* geography.png in Resources */,
 				16A2BB091ACA5B320063A1B2 /* photo2.png in Resources */,
 				16D5552E1AC9AB0B00745B93 /* reveal-icon.png in Resources */,
 				16D5550D1AC9AA9500745B93 /* appbg@2x.png in Resources */,
@@ -1840,8 +1918,10 @@
 				16D555371AC9AB0B00745B93 /* groupicon@2x.png in Resources */,
 				16D555341AC9AB0B00745B93 /* contacts.png in Resources */,
 				16D5553B1AC9AB3400745B93 /* Icon.png in Resources */,
+				1636E8881AD2D5560083E355 /* biology.png in Resources */,
 				16D555301AC9AB0B00745B93 /* settings.png in Resources */,
 				16A2BB1B1ACA60150063A1B2 /* flag.png in Resources */,
+				1636E8841AD2D4BC0083E355 /* English.png in Resources */,
 				16D5550B1AC9AA9500745B93 /* arrow.png in Resources */,
 				16D555111AC9AA9500745B93 /* chatbg.png in Resources */,
 				16A2BB0C1ACA5B320063A1B2 /* photo5.png in Resources */,
@@ -1851,16 +1931,24 @@
 				16A2BB151ACA5ECD0063A1B2 /* LaunchScreen.xib in Resources */,
 				16D554D51AC9A5AD00745B93 /* README.txt in Resources */,
 				16A2BB0D1ACA5B320063A1B2 /* slow.png in Resources */,
+				1636E86F1AD2CDD10083E355 /* contactView.png in Resources */,
 				16D5550C1AC9AA9500745B93 /* appbg.png in Resources */,
 				16D555331AC9AB0B00745B93 /* chat@2x.png in Resources */,
 				16D552C61AC9A46A00745B93 /* Images.xcassets in Resources */,
+				1636E8801AD2D3200083E355 /* math.png in Resources */,
 				16D555081AC9AA9500745B93 /* leftballoon.png in Resources */,
+				1636E88E1AD2D7120083E355 /* category.png in Resources */,
+				1636E8721AD2CE850083E355 /* personalView.png in Resources */,
 				16D5552F1AC9AB0B00745B93 /* reveal-icon@2x.png in Resources */,
+				1636E8821AD2D4560083E355 /* chinese.png in Resources */,
+				1636E88A1AD2D5B20083E355 /* physics.png in Resources */,
+				1636E86C1AD2CD4C0083E355 /* timeLine.png in Resources */,
 				16D555321AC9AB0B00745B93 /* chat.png in Resources */,
 				16A2BB0B1ACA5B320063A1B2 /* photo4.png in Resources */,
 				16D555091AC9AA9500745B93 /* rightballoonred.png in Resources */,
 				16D555101AC9AA9500745B93 /* emptyavatar.png in Resources */,
 				16D555071AC9AA9500745B93 /* sendbutton.png in Resources */,
+				1636E8691AD2CB450083E355 /* homePage.png in Resources */,
 				16A2BB081ACA5B320063A1B2 /* photo1.png in Resources */,
 				16A2BB1A1ACA60150063A1B2 /* message.png in Resources */,
 			);
