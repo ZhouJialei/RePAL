@@ -11,6 +11,7 @@
 #import "YDChatOverViewController.h"
 #import "YDAppDelegate.h"
 #import "YDConversationViewController.h"
+#import "MessageCell.h"
 #if DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
@@ -21,14 +22,16 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     
 }
 @property (nonatomic,strong) YDConversationViewController *conversationVC;
-@property (nonatomic,strong) UITableView *mtableView;
+@property (weak, nonatomic) IBOutlet UITableView *mtableView;
 @property (nonatomic,strong) NSMutableArray* chats;
 
+/*
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
 @property (weak, nonatomic) IBOutlet UILabel *lineOne;
 @property (weak, nonatomic) IBOutlet UILabel *lineTwo;
 @property (weak, nonatomic) IBOutlet UIImageView *isNewImage;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
+*/
 
 @end
 @implementation YDChatOverViewController
@@ -62,20 +65,24 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     if (self.chats)
         self.chats =nil;
     self.chats = [[NSMutableArray alloc]init];
+    //从数据库取到Chat表
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Chat"
                                               inManagedObjectContext:[self appDelegate].managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    //skip Group messages
+    //将数据库中所有不是群消息的消息取得
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isGroupMessage == %@",[NSNumber numberWithBool:NO]];
     //fetch distinct only jidString attribute
     [fetchRequest setPredicate:predicate];
     [fetchRequest setEntity:entity];
+    //setDistinctResults，只取不同值
     [fetchRequest setReturnsDistinctResults:YES];
     [fetchRequest setResultType:NSDictionaryResultType];
+    //根据jidString来获取
     [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:@"jidString"]];
     [fetchRequest setFetchBatchSize:50];
     
     NSError *error=nil;
+    //取得所有符合条件的消息，遍历
     NSArray *fetchedObjects = [[self appDelegate].managedObjectContext executeFetchRequest:fetchRequest error:&error];
     for (NSManagedObject *obj in fetchedObjects)
         {
@@ -104,12 +111,12 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"MessageCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MessageCell *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
     }
     Chat* chat = [self.chats objectAtIndex:indexPath.row];
@@ -118,62 +125,39 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
                                            [XMPPJID jidWithString:chat.jidString]
                                                                                  xmppStream:[self appDelegate ].xmppStream
                                                                        managedObjectContext:[self appDelegate ]. managedObjectContext_roster];
-    
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,60)];
-    bgView.backgroundColor=[UIColor clearColor];
+
     if (![[chat isGroupMessage] boolValue])
     {
-        
-        UIImageView *avatarImage = [[UIImageView alloc] initWithFrame:CGRectMake(6,14,37,37)];
-        avatarImage.backgroundColor=[UIColor clearColor];
-        avatarImage.contentMode=UIViewContentModeScaleAspectFill;
+        //set the avatar for the message cell
         UIImage *avImage = [self configurePhotoForCell:cell user:user];
-        avatarImage.image = avImage;
-        avatarImage.layer.cornerRadius = 5.0;
-        avatarImage.layer.masksToBounds = YES;
-        avatarImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        avatarImage.layer.borderWidth = 1.0;
-        [bgView addSubview:avatarImage];
+        cell.avatarImage.image = avImage;
+        cell.avatarImage.layer.cornerRadius = 5.0;
+        cell.avatarImage.layer.masksToBounds = YES;
+        cell.avatarImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        cell.avatarImage.layer.borderWidth = 1.0;
         
-        UIImageView *arrowView = [[UIImageView alloc] initWithFrame:CGRectMake(286,13,27,45)];
-        arrowView.backgroundColor=[UIColor clearColor];
-        arrowView.image=[UIImage imageNamed:@"arrow.png"];
-        [bgView addSubview:arrowView];
-        
-        UILabel *line1 = [[UILabel alloc] initWithFrame:CGRectMake(58,5,220,25)];
-        line1.backgroundColor = [UIColor clearColor];
+        //show the sender's clear name
         NSString *cleanName = [chat.jidString stringByReplacingOccurrencesOfString:kXMPPServer withString:@""];
         cleanName=[cleanName stringByReplacingOccurrencesOfString:@"@" withString:@""];
-        line1.text=cleanName;
-        line1.font =   [UIFont systemFontOfSize:18];
-        line1.textColor = [UIColor blackColor] ;
-        [bgView addSubview:line1];
+        cell.lineOne.text = cleanName;
+        //if the message is new message, then show the new image and the number of it.
         if ([chat.isNew  boolValue])
         {
-            UIImageView *newImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"new.png"]];
-            newImageView.backgroundColor=[UIColor clearColor];
-            newImageView.frame=CGRectMake(248,16,28,14);
-            [bgView addSubview:newImageView];
             //int numberOfNewMessages = [self countNewMessagesForJID:currentChatThread.jidString];
-            UILabel *numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(257,13,30,15)];
-            numberLabel.backgroundColor = [UIColor clearColor];
-            numberLabel.textAlignment=NSTextAlignmentRight;
-            numberLabel.font=[UIFont systemFontOfSize:16];
-            numberLabel.textColor=[UIColor blackColor];
-            numberLabel.text=[NSString stringWithFormat:@"%i",[self countNewMessagesForJID:chat.jidString]];
-            [bgView addSubview:numberLabel];
+            cell.numberOfNewMessage.text=[NSString stringWithFormat:@"%i",[self countNewMessagesForJID:chat.jidString]];
+            cell.isNew.hidden = NO;
+            cell.numberOfNewMessage.hidden = NO;
         }
+        //if not, hide them
+        else
+        {
+            cell.isNew.hidden = YES;
+            cell.numberOfNewMessage.hidden = YES;
+        }
+        //show the date of the message cell
         NSString *textForSecondLine = [NSString stringWithFormat:@"%@: %@",[YDHelper dayLabelForMessage:chat.messageDate],chat.messageBody];
-        
-        UILabel *line2 = [[UILabel alloc] initWithFrame:CGRectMake(58,38,220,16)];
-        line2.backgroundColor = [UIColor clearColor];
-        line2.text=textForSecondLine;
-        line2.font =  [UIFont systemFontOfSize:12];
-        line2.textColor = [UIColor blackColor] ;
-        [bgView addSubview:line2];
+        cell.lineTwo.text = textForSecondLine;
     }
-    cell.backgroundView = bgView;
-    
     return cell;
 }
  
@@ -221,6 +205,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [self.navigationController pushViewController:self.conversationVC animated:YES];
     self.hidesBottomBarWhenPushed = NO;
     
+    MessageCell *cell = (MessageCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.isNew.hidden = YES;
+    cell.numberOfNewMessage.hidden = YES;
 }
 - (UIImage *)configurePhotoForCell:(UITableViewCell *)cell user:(XMPPUserCoreDataStorageObject *)user
 {
@@ -241,6 +228,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 #pragma mark helper methods
 -(int)countNewMessagesForJID:(NSString *)jidString
 {
+    //先从数据库中取得所有来自同一jid的消息，然后对isNew标志位为真的消息计数
     int ret=0;
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Chat"
                                               inManagedObjectContext:[self appDelegate].managedObjectContext];
@@ -266,6 +254,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     fetchRequest=nil;
     return ret;
 }
+//将来自jidString的最近一条消息add到chat中
 -(Chat *)LatestChatRecordForJID:(NSString *)jidString
 {
     
@@ -276,11 +265,13 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [fetchRequest setEntity:entity];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"jidString == %@",jidString];
     [fetchRequest setPredicate:predicate];
+    //降序排列
     NSSortDescriptor *sd = [[NSSortDescriptor alloc] initWithKey:@"messageDate" ascending:NO];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sd,nil];
     [fetchRequest setSortDescriptors:sortDescriptors];
     NSError *error = nil;
     NSArray *fetchedObjects = [[self appDelegate].managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    //取最近一条
     if ([fetchedObjects count]>0)
         {
         hist  = (Chat *)[fetchedObjects objectAtIndex:0];

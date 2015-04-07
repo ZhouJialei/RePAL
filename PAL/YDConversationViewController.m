@@ -103,6 +103,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     //Add Observer
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newMessageReceived:) name:kNewMessage  object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusUpdateReceived:) name:kChatStatus  object:nil];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.chats.count-1 inSection:0];
+    [self.mtableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {

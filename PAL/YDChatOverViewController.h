@@ -8,6 +8,6 @@
 
 #import "YDBaseViewController.h"
 
-@interface YDChatOverViewController : YDBaseViewController
+@interface YDChatOverViewController : UIViewController
 
 @end

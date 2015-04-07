@@ -8,6 +8,6 @@
 
 #import "YDBaseViewController.h"
 
-@interface YDContactsViewController : YDBaseViewController
+@interface YDContactsViewController : UIViewController
 
 @end
