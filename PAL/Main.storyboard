@@ -492,9 +492,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="42D-YY-kbF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="42D-YY-kbF">
                                 <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="mVJ-vD-ZAh" id="pkT-OV-tMh"/>
+                                    <outlet property="delegate" destination="mVJ-vD-ZAh" id="7vC-kf-Cdr"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -503,12 +509,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CDF-92-J9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2" y="349"/>
+            <point key="canvasLocation" x="-63" y="349"/>
         </scene>
         <!--通 讯 录-->
         <scene sceneID="lUk-JG-6X1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Db-CO-8Gp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6EY-Xw-Lb4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="通 讯 录" image="contactView.png" selectedImage="Icon.png" id="fp8-o2-03H"/>
                     <toolbarItems/>
@@ -521,6 +526,7 @@
                         <segue destination="BsW-7d-Cr0" kind="relationship" relationship="rootViewController" id="VS3-dZ-kCj"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Db-CO-8Gp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-534" y="-415"/>
         </scene>
