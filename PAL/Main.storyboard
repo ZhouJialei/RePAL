@@ -351,7 +351,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccy-SL-LNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2" y="-415"/>
+            <point key="canvasLocation" x="-72" y="-415"/>
         </scene>
         <!--Message View Controller-->
         <scene sceneID="jhf-7c-yTJ">
@@ -480,6 +480,76 @@
             </objects>
             <point key="canvasLocation" x="-938" y="349"/>
         </scene>
+        <!--聊天窗-->
+        <scene sceneID="bVV-bf-cOj">
+            <objects>
+                <viewController title="聊天窗" hidesBottomBarWhenPushed="YES" id="hpo-ZQ-10B" customClass="YDConversationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P7i-P7-ffI"/>
+                        <viewControllerLayoutGuide type="bottom" id="N6S-St-h1s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HVP-Qo-6Qp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iPo-Uf-Nxl">
+                                <rect key="frame" x="0.0" y="17" width="320" height="432"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="KzG-jj-xFA" customClass="ConversationCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KzG-jj-xFA" id="VDa-xg-OyL">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hpo-ZQ-10B" id="VrX-sw-b1C"/>
+                                    <outlet property="delegate" destination="hpo-ZQ-10B" id="Cfe-kW-OQ7"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kZi-0X-Lau">
+                                <rect key="frame" x="0.0" y="512" width="320" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCD-Lj-oMc">
+                                        <rect key="frame" x="235" y="10" width="77" height="36"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Send" backgroundImage="sendbutton.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendMessage:" destination="hpo-ZQ-10B" eventType="touchUpInside" id="8kx-7k-CMv"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cP0-Ug-Yp7">
+                                        <rect key="frame" x="47" y="10" width="185" height="36"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="hpo-ZQ-10B" id="9he-r8-au0"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9oK-Mx-Zls"/>
+                    <connections>
+                        <outlet property="msgText" destination="cP0-Ug-Yp7" id="W24-A5-ePA"/>
+                        <outlet property="mtableView" destination="iPo-Uf-Nxl" id="yZL-G5-6jf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6FB-M3-cP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="344" y="-4"/>
+        </scene>
         <!--Chat Over View Controller-->
         <scene sceneID="Npo-5A-S7t">
             <objects>
@@ -498,7 +568,7 @@
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageCell" rowHeight="60" id="tn1-h8-x4s" customClass="MessageCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageCell" rowHeight="60" id="tn1-h8-x4s" customClass="MessageCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tn1-h8-x4s" id="ixu-M7-0jH">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -544,6 +614,7 @@
                                             <outlet property="lineOne" destination="RWO-ga-78T" id="B9u-l4-1qN"/>
                                             <outlet property="lineTwo" destination="uWx-EB-I60" id="CK3-r6-a5F"/>
                                             <outlet property="numberOfNewMessage" destination="2hy-E4-bqv" id="21k-Hm-2Kp"/>
+                                            <segue destination="hpo-ZQ-10B" kind="push" id="uwv-ky-Cky"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -621,6 +692,7 @@
         <image name="personalView.png" width="34" height="34"/>
         <image name="photo1.png" width="1024" height="768"/>
         <image name="physics.png" width="80" height="111"/>
+        <image name="sendbutton.png" width="154" height="72"/>
         <image name="timeLine.png" width="34" height="33"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

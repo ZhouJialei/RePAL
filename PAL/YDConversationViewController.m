@@ -11,6 +11,7 @@
 #import "DDTTYLogger.h"
 #import <CoreData/CoreData.h>
 #import "YDAppDelegate.h"
+#import "ConversationCell.h"
 #if DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
@@ -19,15 +20,15 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 @interface YDConversationViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
 {
     float prevLines;
-    UIButton *sendButton;
+    //UIButton *sendButton;
 }
+@property (weak, nonatomic) IBOutlet UITextView *msgText;
+@property (weak, nonatomic) IBOutlet UITableView *mtableView;
 @property (nonatomic,strong) NSString *cleanName;
 @property (nonatomic,strong) NSString *conversationJidString;
-@property (nonatomic,strong) UITableView *mtableView;
 @property (nonatomic,strong) NSMutableArray* chats;
-@property (nonatomic,strong) UILabel *statusLabel;
 @property (nonatomic,strong) UIView *sendView;
-@property (nonatomic,strong) UITextView *msgText;
+//@property (nonatomic,strong) UITextView *msgText;
 @end
 
 @implementation YDConversationViewController
@@ -43,14 +44,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [super viewDidLoad];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
-	self.view.backgroundColor=[UIColor whiteColor];
-    self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,63,ScreenWidth,20)];
-    self.statusLabel.backgroundColor = [UIColor grayColor];
-    self.statusLabel.textColor=[UIColor redColor];
-    self.statusLabel.textAlignment=NSTextAlignmentCenter;
-    [self.statusLabel setFont:[UIFont systemFontOfSize:14]];
-    [self.view addSubview:self.statusLabel];
-   
+	//self.view.backgroundColor=[UIColor whiteColor];
+
+   /*
     //Add a UITableView
     self.mtableView = [[UITableView alloc] initWithFrame:CGRectMake(0,60,ScreenWidth,ScreenHeight-80-56) style:UITableViewStylePlain];
     self.mtableView.delegate=self;
@@ -64,27 +60,36 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     //need a view for sending messages with controls
     self.sendView = [[UIView alloc] initWithFrame:CGRectMake(0,ScreenHeight-56,ScreenWidth,56)];
     self.sendView.backgroundColor=[UIColor lightGrayColor];
+    */
+    /*
     self.msgText = [[UITextView alloc] initWithFrame:CGRectMake(47,10,185,36)];
     self.msgText.backgroundColor = [UIColor whiteColor];
     self.msgText.textColor=[UIColor redColor];
     self.msgText.font=[UIFont boldSystemFontOfSize:12];
+    //UIViewAutoresizingFlexibleHeight:视图随父视图的高度成比例变化
+    //UIViewAutoresizingFlexibleTopMargin:视图上边界随父视图成比例变化
     self.msgText.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
     self.msgText.layer.cornerRadius = 10.0f;
+    //returnKeyType:键盘返回键类型
     self.msgText.returnKeyType=UIReturnKeyDone;
     self.msgText.showsHorizontalScrollIndicator=NO;
     self.msgText.showsVerticalScrollIndicator=NO;
     
     self.msgText.delegate=self;
     [self.sendView addSubview:self.msgText];
-    self.msgText.contentInset = UIEdgeInsetsMake(0,0,0,0);
+     */
+    //self.msgText.contentInset = UIEdgeInsetsMake(0,0,0,0);
     prevLines=0.9375f;
     //Add the send button
+    /*
     sendButton = [[UIButton alloc] initWithFrame:CGRectMake(235,10,77,36)];
     sendButton.backgroundColor=[UIColor clearColor];
     [sendButton setBackgroundImage:[UIImage imageNamed:@"sendbutton.png"] forState:UIControlStateNormal];
     [sendButton addTarget:self action:@selector(sendMessage:) forControlEvents:UIControlEventTouchUpInside];
     sendButton.autoresizingMask=UIViewAutoresizingFlexibleTopMargin;
     [self.sendView addSubview:sendButton];
+     */
+    /*
     UILabel *sendLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,77,36)];
     sendLabel.backgroundColor=[UIColor clearColor];
     sendLabel.textAlignment = NSTextAlignmentCenter;
@@ -93,16 +98,18 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     sendLabel.text = @"Send";
     sendLabel.adjustsFontSizeToFitWidth=YES;
     sendLabel.autoresizingMask=UIViewAutoresizingFlexibleTopMargin;
-    [sendButton addSubview:sendLabel];
+    //[sendButton addSubview:sendLabel];
     [self.view addSubview:self.sendView];
-   
+   */
 }
+
 #pragma mark view appearance
 -(void)viewWillAppear:(BOOL)animated
 {
     //Add Observer
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newMessageReceived:) name:kNewMessage  object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusUpdateReceived:) name:kChatStatus  object:nil];
+    //使mtableView每次显示都滚动到最近的聊天记录上
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.chats.count-1 inSection:0];
     [self.mtableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
@@ -117,7 +124,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 {
     NSString *msgStr=  [[aNotification userInfo] valueForKey:@"msg"] ;
     msgStr = [msgStr stringByReplacingOccurrencesOfString:@"@" withString:@""];
-    self.statusLabel.text = [NSString stringWithFormat:@"%@ %@",self.cleanName,msgStr];
 }
 -(void)newMessageReceived:(NSNotification *)aNotification
 {
@@ -131,7 +137,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     //将带@server的jid替换为只有名字的字符串(cleanName)
     self.cleanName = [jidString stringByReplacingOccurrencesOfString:kXMPPServer withString:@""];
     self.cleanName=[self.cleanName stringByReplacingOccurrencesOfString:@"@" withString:@""];
-    self.statusLabel.text = self.cleanName;
     [self loadData];
 }
 

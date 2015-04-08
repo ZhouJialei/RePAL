@@ -20,6 +20,8 @@
 		1636E88C1AD2D6CC0083E355 /* geography.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E88B1AD2D6CC0083E355 /* geography.png */; };
 		1636E88E1AD2D7120083E355 /* category.png in Resources */ = {isa = PBXBuildFile; fileRef = 1636E88D1AD2D7120083E355 /* category.png */; };
 		1636E8CA1AD408000083E355 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636E8C91AD408000083E355 /* MessageCell.m */; };
+		1636E8CC1AD552C50083E355 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D5544D1AC9A5AD00745B93 /* libidn.a */; };
+		1636E8CF1AD55AE60083E355 /* ConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636E8CE1AD55AE60083E355 /* ConversationCell.m */; };
 		1653E1BF1ACA977B001ACCBF /* YDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1653E1BE1ACA977B001ACCBF /* YDAppDelegate.m */; };
 		1653E1C21ACD0B4D001ACCBF /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653E1C11ACD0B4D001ACCBF /* Address.swift */; };
 		16A2BAF01ACA5AF60063A1B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A2BAEF1ACA5AF60063A1B2 /* Main.storyboard */; };
@@ -192,7 +194,6 @@
 		16D554D81AC9A5AD00745B93 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D554451AC9A5AD00745B93 /* DDXMLElement.m */; };
 		16D554D91AC9A5AD00745B93 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D554471AC9A5AD00745B93 /* DDXMLNode.m */; };
 		16D554DA1AC9A5AD00745B93 /* build-libidn.sh in Resources */ = {isa = PBXBuildFile; fileRef = 16D5544B1AC9A5AD00745B93 /* build-libidn.sh */; };
-		16D554DB1AC9A5AD00745B93 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D5544D1AC9A5AD00745B93 /* libidn.a */; };
 		16D554DD1AC9A5D400745B93 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D554DC1AC9A5D400745B93 /* Security.framework */; };
 		16D554DF1AC9A5DB00745B93 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D554DE1AC9A5DB00745B93 /* CFNetwork.framework */; };
 		16D554E11AC9A5E700745B93 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D554E01AC9A5E700745B93 /* CoreLocation.framework */; };
@@ -258,6 +259,8 @@
 		1636E88D1AD2D7120083E355 /* category.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = category.png; sourceTree = "<group>"; };
 		1636E8C81AD408000083E355 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		1636E8C91AD408000083E355 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		1636E8CD1AD55AE60083E355 /* ConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationCell.h; sourceTree = "<group>"; };
+		1636E8CE1AD55AE60083E355 /* ConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationCell.m; sourceTree = "<group>"; };
 		1653E1BD1ACA977B001ACCBF /* YDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDAppDelegate.h; sourceTree = "<group>"; };
 		1653E1BE1ACA977B001ACCBF /* YDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDAppDelegate.m; sourceTree = "<group>"; };
 		1653E1C11ACD0B4D001ACCBF /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -651,6 +654,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1636E8CC1AD552C50083E355 /* libidn.a in Frameworks */,
 				16D554E91AC9A60A00745B93 /* libresolv.dylib in Frameworks */,
 				16D554E71AC9A60100745B93 /* CoreData.framework in Frameworks */,
 				16D554E51AC9A5F900745B93 /* SystemConfiguration.framework in Frameworks */,
@@ -658,7 +662,6 @@
 				16D554E11AC9A5E700745B93 /* CoreLocation.framework in Frameworks */,
 				16D554DF1AC9A5DB00745B93 /* CFNetwork.framework in Frameworks */,
 				16D554DD1AC9A5D400745B93 /* Security.framework in Frameworks */,
-				16D554DB1AC9A5AD00745B93 /* libidn.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +735,17 @@
 				1636E8C91AD408000083E355 /* MessageCell.m */,
 			);
 			name = ChatOverViewController;
+			sourceTree = "<group>";
+		};
+		1636E8CB1AD54F040083E355 /* ConversationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16A2BB2B1ACA686D0063A1B2 /* YDConversationViewController.h */,
+				16A2BB2C1ACA686D0063A1B2 /* YDConversationViewController.m */,
+				1636E8CD1AD55AE60083E355 /* ConversationCell.h */,
+				1636E8CE1AD55AE60083E355 /* ConversationCell.m */,
+			);
+			name = ConversationViewController;
 			sourceTree = "<group>";
 		};
 		1653E1C01ACD0B22001ACCBF /* Model */ = {
@@ -1805,6 +1819,7 @@
 		16D5553C1AC9ABCE00745B93 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1636E8CB1AD54F040083E355 /* ConversationViewController */,
 				1636E8C71AD407D50083E355 /* ChatOverViewController */,
 				16A2BAF21ACA5B080063A1B2 /* LoginViewController.swift */,
 				16A2BAF31ACA5B080063A1B2 /* PersonalViewController.swift */,
@@ -1824,8 +1839,6 @@
 				16A2BB241ACA686D0063A1B2 /* YDSettingsViewController.m */,
 				16A2BB251ACA686D0063A1B2 /* YDSignInViewController.h */,
 				16A2BB261ACA686D0063A1B2 /* YDSignInViewController.m */,
-				16A2BB2B1ACA686D0063A1B2 /* YDConversationViewController.h */,
-				16A2BB2C1ACA686D0063A1B2 /* YDConversationViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1991,6 +2004,7 @@
 				16D554631AC9A5AD00745B93 /* XMPPBandwidthMonitor.m in Sources */,
 				16A2BAFF1ACA5B090063A1B2 /* MyTabBarViewController.swift in Sources */,
 				16D554BC1AC9A5AD00745B93 /* XEP_0223.m in Sources */,
+				1636E8CF1AD55AE60083E355 /* ConversationCell.m in Sources */,
 				16D554941AC9A5AD00745B93 /* XMPPvCardTempModule.m in Sources */,
 				1653E1C21ACD0B4D001ACCBF /* Address.swift in Sources */,
 				16D554BA1AC9A5AD00745B93 /* XMPPTime.m in Sources */,
