@@ -12,6 +12,8 @@
 #import <CoreData/CoreData.h>
 #import "YDAppDelegate.h"
 #import "ConversationCell.h"
+
+static  NSString * const conversationCellIdentifier = @"conversationCell";
 #if DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
@@ -79,7 +81,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [self.sendView addSubview:self.msgText];
      */
     //self.msgText.contentInset = UIEdgeInsetsMake(0,0,0,0);
-    prevLines=0.9375f;
+    //prevLines=0.9375f;
     //Add the send button
     /*
     sendButton = [[UIButton alloc] initWithFrame:CGRectMake(235,10,77,36)];
@@ -104,6 +106,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 }
 
 #pragma mark view appearance
+#pragma mark 没能完全滚动到消息底部 待处理
 -(void)viewWillAppear:(BOOL)animated
 {
     //Add Observer
@@ -176,6 +179,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 #pragma mark UITableView
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self heightForConversationCellAtIndexPath:indexPath];
+    /*
     Chat *currentChatMessage = (Chat *)[self.chats objectAtIndex:indexPath.row];
     
     if (![currentChatMessage.hasMedia boolValue])
@@ -197,8 +202,29 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         {
         return 100;
         }
-    
+    */
 }
+
+-(CGFloat)heightForConversationCellAtIndexPath:(NSIndexPath *)indexPath {
+    static ConversationCell *sizingCell = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sizingCell = [self.mtableView dequeueReusableCellWithIdentifier:conversationCellIdentifier];
+    });
+    
+    [self configureConversationCell:sizingCell atIndexPath:indexPath];
+    return [self calculateHeightForConfiguredSizingCell:sizingCell];
+}
+
+-(CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
+    
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 1.0f;
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 	return 1;
@@ -212,6 +238,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    return [self conversationCellAtIndexPath:indexPath];
+    
+    
 	static NSString *CellIdentifier = @"Cell";
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -279,14 +308,39 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [cellContentView addSubview:senderLabel];
     cell.backgroundView = cellContentView;
 	return cell;
+    
 }
 
+-(ConversationCell *)conversationCellAtIndexPath:(NSIndexPath *)indexPath {
+    ConversationCell *cell = [self.mtableView dequeueReusableCellWithIdentifier:conversationCellIdentifier forIndexPath:indexPath];
+    [self configureConversationCell:cell atIndexPath:indexPath];
+    return cell;
+}
 
+-(void)configureConversationCell:(ConversationCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Chat* chat = [self.chats objectAtIndex:indexPath.row];
+    //set the text for textLabel
+    cell.textLabel.text = chat.messageBody;
+    //set the alignment and the senderLabel depending on the direction
+    if ([chat.direction isEqualToString:@"IN"]) {
+        //left aligned
+        cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        cell.senderLabel.textAlignment = NSTextAlignmentLeft;
+        cell.senderLabel.text= [NSString stringWithFormat:@"%@: %@",self.cleanName,[YDHelper dayLabelForMessage:chat.messageDate]];
+        
+    }else {
+        //right aligned
+        cell.textLabel.textAlignment = NSTextAlignmentRight;
+        cell.senderLabel.textAlignment = NSTextAlignmentRight;
+        cell.senderLabel.text= [NSString stringWithFormat:@"You %@" ,[YDHelper dayLabelForMessage:chat.messageDate]];
+    }
+    //finally set the backgroundView
+#pragma mark please implement this
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     
 }
 #pragma mark screenupdates

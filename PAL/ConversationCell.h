@@ -10,4 +10,7 @@
 
 @interface ConversationCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UILabel *senderLabel;
+
 @end

@@ -492,17 +492,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iPo-Uf-Nxl">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iPo-Uf-Nxl">
                                 <rect key="frame" x="0.0" y="17" width="320" height="432"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="KzG-jj-xFA" customClass="ConversationCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="conversationCell" rowHeight="82" id="KzG-jj-xFA" customClass="ConversationCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KzG-jj-xFA" id="VDa-xg-OyL">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" text="text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="zbC-c5-hSq">
+                                                    <rect key="frame" x="20" y="20" width="280" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" text="sender" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="qxg-fG-LBv">
+                                                    <rect key="frame" x="20" y="41" width="280" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qxg-fG-LBv" secondAttribute="trailing" constant="20" id="8cq-fC-HCa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qxg-fG-LBv" secondAttribute="bottom" constant="20" id="DL0-6M-vzB"/>
+                                                <constraint firstItem="zbC-c5-hSq" firstAttribute="top" secondItem="VDa-xg-OyL" secondAttribute="topMargin" constant="20" id="O8O-jR-mfX"/>
+                                                <constraint firstItem="zbC-c5-hSq" firstAttribute="leading" secondItem="VDa-xg-OyL" secondAttribute="leadingMargin" constant="20" id="SCT-qd-6kv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zbC-c5-hSq" secondAttribute="trailing" constant="20" id="Unu-A9-6Lf"/>
+                                                <constraint firstItem="qxg-fG-LBv" firstAttribute="top" secondItem="zbC-c5-hSq" secondAttribute="bottom" id="Z6A-M2-mQB"/>
+                                                <constraint firstItem="qxg-fG-LBv" firstAttribute="leading" secondItem="VDa-xg-OyL" secondAttribute="leadingMargin" constant="20" id="ttH-Eo-ptU"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="senderLabel" destination="qxg-fG-LBv" id="QyX-Ay-H4R"/>
+                                            <outlet property="textLabel" destination="zbC-c5-hSq" id="Fz9-BZ-ijs"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -548,7 +575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6FB-M3-cP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="344" y="-4"/>
+            <point key="canvasLocation" x="368" y="-4"/>
         </scene>
         <!--Chat Over View Controller-->
         <scene sceneID="Npo-5A-S7t">
@@ -614,7 +641,7 @@
                                             <outlet property="lineOne" destination="RWO-ga-78T" id="B9u-l4-1qN"/>
                                             <outlet property="lineTwo" destination="uWx-EB-I60" id="CK3-r6-a5F"/>
                                             <outlet property="numberOfNewMessage" destination="2hy-E4-bqv" id="21k-Hm-2Kp"/>
-                                            <segue destination="hpo-ZQ-10B" kind="push" id="uwv-ky-Cky"/>
+                                            <segue destination="hpo-ZQ-10B" kind="push" identifier="goConversation" id="uwv-ky-Cky"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

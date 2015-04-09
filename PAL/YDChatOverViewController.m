@@ -191,7 +191,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     }
     
 }
-
+/*
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -209,6 +209,17 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     cell.isNew.hidden = YES;
     cell.numberOfNewMessage.hidden = YES;
 }
+*/
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"goConversation"]) {
+        YDConversationViewController *conversationVC = (YDConversationViewController *)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.mtableView indexPathForCell:sender];
+        Chat *chat = [self.chats objectAtIndex:indexPath.row];
+        [conversationVC showConversationForJIDString:chat.jidString];
+    }
+}
+
+
 - (UIImage *)configurePhotoForCell:(UITableViewCell *)cell user:(XMPPUserCoreDataStorageObject *)user
 {
 	if (user.photo != nil)
