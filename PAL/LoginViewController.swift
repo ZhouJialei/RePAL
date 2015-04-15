@@ -38,8 +38,10 @@ class LoginViewController: UIViewController{
                 //but it's impossible for the compiler to know the type of the 
                 //JSON(the exact type is NSDictionary)'s key and value
                 //so we must do the following thing
+                //println(response)
                 let response = JSON as NSDictionary
                 let status = response.objectForKey("status") as Int
+                println(status)
                 //then we deal with the response
                 //如果登陆成功，则将用户名密码服务器地址都存入NSUserDefault中
                 //并自动配置自动登陆
@@ -57,7 +59,6 @@ class LoginViewController: UIViewController{
         //MARK: hard cord used to check im service
         self.saveCredentials()
         self.dismissViewControllerAnimated(true, completion: nil)
-
     }
     
     func saveCredentials() {

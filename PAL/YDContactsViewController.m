@@ -11,11 +11,16 @@
 #import <CoreData/CoreData.h>
 #import "YDAppDelegate.h"
 #import "DDLog.h"
+#import "ContactCell.h"
+
 #if DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
 static const int ddLogLevel = LOG_LEVEL_INFO;
 #endif
+
+static NSString * const CellIdentifier = @"ContactCell";
+
 @interface YDContactsViewController ()<NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     NSFetchedResultsController *fetchedResultsController;
@@ -66,6 +71,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [self.view addSubview:inviteButton];
      */
 }
+/*
 -(IBAction)inviteUser:(id)sender
 {
     UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Enter the user name" message:@"e.g peter" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
@@ -83,6 +89,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         }
     
 }
+*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark NSFetchedResultsController
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,23 +155,23 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 #pragma mark UITableViewCell helpers
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (void)configurePhotoForCell:(UITableViewCell *)cell user:(XMPPUserCoreDataStorageObject *)user
+- (void)configurePhotoForCell:(ContactCell *)cell user:(XMPPUserCoreDataStorageObject *)user
 {
 	// Our xmppRosterStorage will cache photos as they arrive from the xmppvCardAvatarModule.
 	// We only need to ask the avatar module for a photo, if the roster doesn't have it.
 	
 	if (user.photo != nil)
         {
-		cell.imageView.image = user.photo;
+		cell.avatarImage.image = user.photo;
         }
 	else
         {
 		NSData *photoData = [[[self appDelegate] xmppvCardAvatarModule] photoDataForJID:user.jid];
         
 		if (photoData != nil)
-			cell.imageView.image = [UIImage imageWithData:photoData];
+			cell.avatarImage.image = [UIImage imageWithData:photoData];
 		else
-			cell.imageView.image = [UIImage imageNamed:@"emptyavatar"];
+			cell.avatarImage.image = [UIImage imageNamed:@"emptyavatar"];
         }
 }
 
@@ -217,22 +224,23 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *CellIdentifier = @"Cell";
+	//static NSString *CellIdentifier = @"Cell";
 	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	ContactCell * cell = (ContactCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil)
         {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+		cell = [[ContactCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
         }
 	//objectAtIndexPath:给出一个index，返回该row所显示的NSManagedObject
 	XMPPUserCoreDataStorageObject *user = [[self fetchedResultsController] objectAtIndexPath:indexPath];
 	
-	cell.textLabel.text = user.displayName;
+	cell.nameLabel.text = user.displayName;
 	[self configurePhotoForCell:cell user:user];
 	
 	return cell;
 }
+/*
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -249,6 +257,21 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
      [self.navigationController pushViewController:self.conversationVC animated:YES];
     self.hidesBottomBarWhenPushed = NO;
     
+}
+*/
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"goConversation"]) {
+        YDConversationViewController *conversationVC = (YDConversationViewController *)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.mtableView indexPathForCell:sender];
+        XMPPUserCoreDataStorageObject *user = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        DDLogInfo(@"user %@",user.jidStr);
+        
+        [conversationVC showConversationForJIDString:user.jidStr];
+        /*
+        Chat *chat = [self.chats objectAtIndex:indexPath.row];
+        [conversationVC showConversationForJIDString:chat.jidString];
+        */
+    }
 }
 - (void)viewWillDisappear:(BOOL)animated
 {

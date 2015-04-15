@@ -52,6 +52,7 @@
 		16A2BB311ACA686D0063A1B2 /* YDContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BB281ACA686D0063A1B2 /* YDContactsViewController.m */; };
 		16A2BB321ACA686D0063A1B2 /* YDChatOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BB2A1ACA686D0063A1B2 /* YDChatOverViewController.m */; };
 		16A2BB331ACA686D0063A1B2 /* YDConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BB2C1ACA686D0063A1B2 /* YDConversationViewController.m */; };
+		16D3059F1ADD48520053451A /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D3059E1ADD48520053451A /* ContactCell.m */; };
 		16D552B81AC9A46A00745B93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D552B71AC9A46A00745B93 /* main.m */; };
 		16D552C61AC9A46A00745B93 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16D552C51AC9A46A00745B93 /* Images.xcassets */; };
 		16D552D51AC9A46A00745B93 /* PALTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D552D41AC9A46A00745B93 /* PALTests.m */; };
@@ -300,6 +301,8 @@
 		16A2BB2A1ACA686D0063A1B2 /* YDChatOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDChatOverViewController.m; sourceTree = "<group>"; };
 		16A2BB2B1ACA686D0063A1B2 /* YDConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDConversationViewController.h; sourceTree = "<group>"; };
 		16A2BB2C1ACA686D0063A1B2 /* YDConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDConversationViewController.m; sourceTree = "<group>"; };
+		16D3059D1ADD48520053451A /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
+		16D3059E1ADD48520053451A /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
 		16D552B21AC9A46A00745B93 /* PAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16D552B61AC9A46A00745B93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16D552B71AC9A46A00745B93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -776,6 +779,17 @@
 				16A2BB101ACA5BA30063A1B2 /* Alamofire.swift */,
 			);
 			name = Library;
+			sourceTree = "<group>";
+		};
+		16D3059C1ADD47E40053451A /* ContactViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16A2BB271ACA686D0063A1B2 /* YDContactsViewController.h */,
+				16A2BB281ACA686D0063A1B2 /* YDContactsViewController.m */,
+				16D3059D1ADD48520053451A /* ContactCell.h */,
+				16D3059E1ADD48520053451A /* ContactCell.m */,
+			);
+			name = ContactViewController;
 			sourceTree = "<group>";
 		};
 		16D552A91AC9A46A00745B93 = {
@@ -1819,6 +1833,7 @@
 		16D5553C1AC9ABCE00745B93 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				16D3059C1ADD47E40053451A /* ContactViewController */,
 				1636E8CB1AD54F040083E355 /* ConversationViewController */,
 				1636E8C71AD407D50083E355 /* ChatOverViewController */,
 				16A2BAF21ACA5B080063A1B2 /* LoginViewController.swift */,
@@ -1833,8 +1848,6 @@
 				16A2BB201ACA686D0063A1B2 /* YDBaseViewController.m */,
 				16A2BB211ACA686D0063A1B2 /* YDHomeViewController.h */,
 				16A2BB221ACA686D0063A1B2 /* YDHomeViewController.m */,
-				16A2BB271ACA686D0063A1B2 /* YDContactsViewController.h */,
-				16A2BB281ACA686D0063A1B2 /* YDContactsViewController.m */,
 				16A2BB231ACA686D0063A1B2 /* YDSettingsViewController.h */,
 				16A2BB241ACA686D0063A1B2 /* YDSettingsViewController.m */,
 				16A2BB251ACA686D0063A1B2 /* YDSignInViewController.h */,
@@ -2006,6 +2019,7 @@
 				16D554BC1AC9A5AD00745B93 /* XEP_0223.m in Sources */,
 				1636E8CF1AD55AE60083E355 /* ConversationCell.m in Sources */,
 				16D554941AC9A5AD00745B93 /* XMPPvCardTempModule.m in Sources */,
+				16D3059F1ADD48520053451A /* ContactCell.m in Sources */,
 				1653E1C21ACD0B4D001ACCBF /* Address.swift in Sources */,
 				16D554BA1AC9A5AD00745B93 /* XMPPTime.m in Sources */,
 				16D5548A1AC9A5AD00745B93 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,

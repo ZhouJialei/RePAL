@@ -9,6 +9,6 @@
 import Foundation
 
 
-let serverAddress = "http://192.168.1.11/pal_studio/index.php/Wap/Login/login.html"
+let serverAddress = "http://www.itaoxue.me/index.php/Wap/Login/login.html"
 let searchAddress = "http://192.168.1.11/pal_studio/index.php/Wap/Search/search"
 let serverDomain = "zhoujialeidemacbook-pro.local"

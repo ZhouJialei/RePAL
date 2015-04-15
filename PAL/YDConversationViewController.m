@@ -6,6 +6,13 @@
 //  Copyright (c) 2015年 ZhouJialei. All rights reserved.
 //
 
+//两个问题
+//第一为老问题，如何处理动态高度，并且在保证美观的前提下嵌入图片
+//第二为键盘输入问题
+//实现思路：键盘弹出时sendView与mtableView上移
+//键盘消失时sendView与mtableView回复原来位置
+//当touch其他位置时键盘消失
+
 #import "YDConversationViewController.h"
 #import "DDLog.h"
 #import "DDTTYLogger.h"
@@ -26,10 +33,13 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 }
 @property (weak, nonatomic) IBOutlet UITextView *msgText;
 @property (weak, nonatomic) IBOutlet UITableView *mtableView;
+@property (weak, nonatomic) IBOutlet UIView *sendView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (nonatomic,strong) NSString *cleanName;
 @property (nonatomic,strong) NSString *conversationJidString;
 @property (nonatomic,strong) NSMutableArray* chats;
-@property (nonatomic,strong) UIView *sendView;
+
 //@property (nonatomic,strong) UITextView *msgText;
 @end
 
@@ -44,6 +54,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 {
     
     [super viewDidLoad];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
 	//self.view.backgroundColor=[UIColor whiteColor];
@@ -105,6 +117,82 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
    */
 }
 
+-(void)dismissKeyboard {
+    [self.msgText resignFirstResponder];
+}
+
+#pragma mark keyboard notifications
+-(void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void)keyboardWasShown:(NSNotification *)aNotification
+{
+    NSDictionary *info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey: UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    //self.mtableView.frame=CGRectMake(0,0,ScreenWidth,453-kbSize.height);
+    [UITableView beginAnimations:@"MoveView" context:nil];
+    [UITableView setAnimationDuration:0.2f];
+    self.mtableView.frame=CGRectMake(0,0,ScreenWidth,453-kbSize.height);
+    [UITableView commitAnimations];
+    
+    //self.sendView.frame = CGRectMake(0, 453-kbSize.height, ScreenWidth, 56);
+    [UIView beginAnimations:@"MoveView" context:nil];
+    [UIView setAnimationDuration:0.2f];
+    self.sendView.frame = CGRectMake(0, 453-kbSize.height, ScreenWidth, 56);
+    [self scrollToBottomAnimated:YES];
+    [UIView commitAnimations];
+    
+    //Send your chat state
+    NSXMLElement *message = [NSXMLElement elementWithName:@"message"];
+    [message addAttributeWithName:@"type" stringValue:@"chat"];
+    [message addAttributeWithName:@"to" stringValue:self.conversationJidString];
+    NSXMLElement *status = [NSXMLElement elementWithName:@"composing" xmlns:@"http://jabber.org/protocol/chatstates"];
+    [message addChild:status];
+    [[self appDelegate].xmppStream sendElement:message];
+}
+
+-(void)keyboardWillBeHidden:(NSNotification *)aNotification
+{
+    /*
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+     */
+    [UITableView beginAnimations:@"MoveView" context:nil];
+    [UITableView setAnimationDuration:0.2f];
+    self.mtableView.frame=CGRectMake(0,0,ScreenWidth,453);
+    [UITableView commitAnimations];
+    
+    //self.sendView.frame = CGRectMake(0, 453-kbSize.height, ScreenWidth, 56);
+    [UIView beginAnimations:@"MoveView" context:nil];
+    [UIView setAnimationDuration:0.2f];
+    self.sendView.frame = CGRectMake(0, 453, ScreenWidth, 56);
+    [self scrollToBottomAnimated:YES];
+    [UIView commitAnimations];
+
+}
+/*
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    self.mtableView.frame=CGRectMake(0,60,ScreenWidth,210);
+    [UITableView beginAnimations:@"MoveView" context:nil];
+    [UITableView setAnimationDuration:0.2f];
+    self.mtableView.frame=CGRectMake(0,60,ScreenWidth,210);
+    [UITableView commitAnimations];
+    
+    self.sendView.frame = CGRectMake(0, 270, ScreenWidth, 56);
+    [UIView beginAnimations:@"MoveView" context:nil];
+    [UIView setAnimationDuration:0.2f];
+    self.sendView.frame = CGRectMake(0, 270, ScreenWidth, 56);
+    [self scrollToBottomAnimated:YES];
+    [UIView commitAnimations];
+}
+*/
+
 #pragma mark view appearance
 #pragma mark 没能完全滚动到消息底部 待处理
 -(void)viewWillAppear:(BOOL)animated
@@ -112,9 +200,17 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     //Add Observer
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newMessageReceived:) name:kNewMessage  object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusUpdateReceived:) name:kChatStatus  object:nil];
+    [self registerForKeyboardNotifications];
     //使mtableView每次显示都滚动到最近的聊天记录上
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.chats.count-1 inSection:0];
-    [self.mtableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    if (self.chats.count > 1) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.chats.count-1 inSection:0];
+        [self.mtableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }    
+    //添加键盘的监听事件
+    /*
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHidden:) name:UIKeyboardDidHideNotification object:nil];
+     */
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -240,7 +336,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 {
     return [self conversationCellAtIndexPath:indexPath];
     
-    
+    /*
 	static NSString *CellIdentifier = @"Cell";
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -308,7 +404,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [cellContentView addSubview:senderLabel];
     cell.backgroundView = cellContentView;
 	return cell;
-    
+    */
 }
 
 -(ConversationCell *)conversationCellAtIndexPath:(NSIndexPath *)indexPath {
@@ -344,16 +440,20 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     
 }
 #pragma mark screenupdates
+#pragma mark need to deal the text input with storyboard
+/*
 //when you start entering text, the table view should be shortened
 -(void)shortenTableView
 {
     [UIView beginAnimations:@"moveView" context:nil];
+    //动画持续时间
     [UIView setAnimationDuration:0.2];
         self.mtableView.frame=CGRectMake(0,80,ScreenWidth,210);
         [self scrollToBottomAnimated:YES];
     [UIView commitAnimations];
     prevLines=0.9375f;
 }
+
 //when finished entering text the table view should change to normal size
 -(void)showFullTableView
 {
@@ -365,6 +465,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [UIView commitAnimations];
     [self scrollToBottomAnimated:YES];
 }
+*/
 - (void)scrollToBottomAnimated:(BOOL)animated {
     NSInteger bottomRow = [self.chats count] - 1;
     if (bottomRow >= 0) {
@@ -373,7 +474,40 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
                           atScrollPosition:UITableViewScrollPositionBottom animated:animated];
     }
 }
+/*
+#pragma mark keyboard
+-(void)keyboardDidShow:(NSNotification *)notification
+{
+    //get the height of the keyboard
+    NSValue *keyboardObject = [[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey];
+    
+    CGRect keyboardRect;
+    
+    [keyboardObject getValue:&keyboardRect];
+    
+    //set the position of the sendview
+        //set the animation
+    [UIView beginAnimations:nil context:nil];
+        //set the duration
+    [UIView setAnimationDuration:0.2];
+        //set the frame of the view,moving up
+    [(UIView *)[self.view viewWithTag:1000] setFrame:CGRectMake(0, self.view.frame.size.height-keyboardRect.size.height-56, 320, 56)];
+    
+    [UIView commitAnimations];
+}
 
+-(void)keyboardDidHidden
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.2];
+    //set the frame of the view,moving down
+    [(UIView *)[self.view viewWithTag:1000] setFrame:CGRectMake(0, self.view.frame.size.height - 56, 320, 56)];
+    [UIView commitAnimations];
+}
+*/
+
+
+/*
 #pragma mark UITextView Delegate
 -(void)textViewDidChange:(UITextView *)textView
 {
@@ -423,7 +557,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [[self appDelegate].xmppStream sendElement:message];
  
 }
-
+*/
 #pragma mark send message
 -(IBAction)sendMessage:(id)sender
 {
@@ -470,7 +604,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     //Reload our data
     [self loadData];
     //Restore the Screen
-    [self showFullTableView];
+    //[self showFullTableView];
     
 }
 
