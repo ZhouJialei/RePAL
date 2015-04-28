@@ -8,18 +8,26 @@
 
 import UIKit
 
-class HomePageViewController: UIViewController, UIScrollViewDelegate{
+//页面跳转已经在storyboard中做了 不要再画蛇添足了！！！
+//否则会引发window hierarchy问题
+
+class HomePageViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource{
 
     var pageImages: [UIImage] = []
     var pageViews: [UIImageView?] = []
     var timer: NSTimer!
+    var recommandArray: [RecommandCell] = []
     
+    @IBOutlet weak var recommandTableView: UITableView!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+    }
+   
+    override func viewDidAppear(animated: Bool) {
         //首页滑动广告栏，已完成了自动滑动的图片，仍需添加gesturerecognizer并增加相应的跳转路径
         let imageW: CGFloat = self.scrollView.frame.size.width
         let imageH: CGFloat = self.scrollView.frame.size.height
@@ -47,7 +55,6 @@ class HomePageViewController: UIViewController, UIScrollViewDelegate{
         
         self.addTimer()
     }
-    
     // function for the bounce
     func nextImage() {
         
@@ -87,7 +94,7 @@ class HomePageViewController: UIViewController, UIScrollViewDelegate{
     func removeTimer() {
         self.timer.invalidate()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -100,7 +107,38 @@ class HomePageViewController: UIViewController, UIScrollViewDelegate{
         return true
     }
     
+    //MARK: recommandTableView delegate methods
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return recommandArray.count
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    //MARK: TODO
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let CellIdentifier: String = "RecommandPerson"
+        
+        var cell: RecommandCell? = tableView.dequeueReusableCellWithIdentifier (CellIdentifier, forIndexPath: indexPath) as? RecommandCell
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier) as? RecommandCell
+        }
+        //MARK:TODO
+        var portraitImageURL = ""
+        request(.GET, portraitImageURL).response() {
+            (_, _, data, _) in
+            
+            let portraitImage = UIImage(data: data! as NSData)
+            cell?.portraitImage.image = portraitImage
+        }
+        
+        return cell!
+    }
+    
+    //use dispatch to do the segue after the viewDidLoad
+
     /*
     // MARK: - Navigation
 

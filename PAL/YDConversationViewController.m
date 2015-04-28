@@ -8,10 +8,6 @@
 
 //两个问题
 //第一为老问题，如何处理动态高度，并且在保证美观的前提下嵌入图片
-//第二为键盘输入问题
-//实现思路：键盘弹出时sendView与mtableView上移
-//键盘消失时sendView与mtableView回复原来位置
-//当touch其他位置时键盘消失
 
 #import "YDConversationViewController.h"
 #import "DDLog.h"
@@ -19,7 +15,7 @@
 #import <CoreData/CoreData.h>
 #import "YDAppDelegate.h"
 #import "ConversationCell.h"
-
+#pragma mark hello world
 static  NSString * const conversationCellIdentifier = @"conversationCell";
 #if DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -133,12 +129,14 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     NSDictionary *info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey: UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
+    //move the tableView
     //self.mtableView.frame=CGRectMake(0,0,ScreenWidth,453-kbSize.height);
     [UITableView beginAnimations:@"MoveView" context:nil];
     [UITableView setAnimationDuration:0.2f];
     self.mtableView.frame=CGRectMake(0,0,ScreenWidth,453-kbSize.height);
     [UITableView commitAnimations];
     
+    //move the sendView
     //self.sendView.frame = CGRectMake(0, 453-kbSize.height, ScreenWidth, 56);
     [UIView beginAnimations:@"MoveView" context:nil];
     [UIView setAnimationDuration:0.2f];
@@ -162,11 +160,13 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
      */
+    //reset the tableView
     [UITableView beginAnimations:@"MoveView" context:nil];
     [UITableView setAnimationDuration:0.2f];
     self.mtableView.frame=CGRectMake(0,0,ScreenWidth,453);
     [UITableView commitAnimations];
     
+    //reset the sendView
     //self.sendView.frame = CGRectMake(0, 453-kbSize.height, ScreenWidth, 56);
     [UIView beginAnimations:@"MoveView" context:nil];
     [UIView setAnimationDuration:0.2f];
@@ -176,7 +176,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 }
 /*
--(void)textViewDidBeginEditing:(UITextView *)textView
+-(void)textViewDidBeginEditing:(UITextView *)textViewY
 {
     self.mtableView.frame=CGRectMake(0,60,ScreenWidth,210);
     [UITableView beginAnimations:@"MoveView" context:nil];

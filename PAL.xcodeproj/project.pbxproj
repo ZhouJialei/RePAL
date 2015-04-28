@@ -22,10 +22,11 @@
 		1636E8CA1AD408000083E355 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636E8C91AD408000083E355 /* MessageCell.m */; };
 		1636E8CC1AD552C50083E355 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D5544D1AC9A5AD00745B93 /* libidn.a */; };
 		1636E8CF1AD55AE60083E355 /* ConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636E8CE1AD55AE60083E355 /* ConversationCell.m */; };
+		164DC7141AE52905002E5D78 /* RecommandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164DC7131AE52905002E5D78 /* RecommandCell.swift */; };
+		164DC77F1AE6033A002E5D78 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 164DC77E1AE6033A002E5D78 /* RegisterViewController.m */; };
 		1653E1BF1ACA977B001ACCBF /* YDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1653E1BE1ACA977B001ACCBF /* YDAppDelegate.m */; };
 		1653E1C21ACD0B4D001ACCBF /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653E1C11ACD0B4D001ACCBF /* Address.swift */; };
 		16A2BAF01ACA5AF60063A1B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A2BAEF1ACA5AF60063A1B2 /* Main.storyboard */; };
-		16A2BAFA1ACA5B090063A1B2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BAF21ACA5B080063A1B2 /* LoginViewController.swift */; };
 		16A2BAFB1ACA5B090063A1B2 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BAF31ACA5B080063A1B2 /* PersonalViewController.swift */; };
 		16A2BAFC1ACA5B090063A1B2 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BAF41ACA5B080063A1B2 /* MessageViewController.swift */; };
 		16A2BAFD1ACA5B090063A1B2 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BAF51ACA5B080063A1B2 /* TimeViewController.swift */; };
@@ -52,6 +53,10 @@
 		16A2BB311ACA686D0063A1B2 /* YDContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BB281ACA686D0063A1B2 /* YDContactsViewController.m */; };
 		16A2BB321ACA686D0063A1B2 /* YDChatOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BB2A1ACA686D0063A1B2 /* YDChatOverViewController.m */; };
 		16A2BB331ACA686D0063A1B2 /* YDConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BB2C1ACA686D0063A1B2 /* YDConversationViewController.m */; };
+		16D2E79F1AEF4B2300233974 /* SearchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E79E1AEF4B2300233974 /* SearchHistoryViewController.swift */; };
+		16D2E7A11AEF4B3600233974 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7A01AEF4B3600233974 /* SearchResultsViewController.swift */; };
+		16D2E7A31AEF4B4700233974 /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7A21AEF4B4700233974 /* ResultsCell.swift */; };
+		16D2E7A51AEF4EDD00233974 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7A41AEF4EDD00233974 /* LoginViewController.swift */; };
 		16D3059F1ADD48520053451A /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D3059E1ADD48520053451A /* ContactCell.m */; };
 		16D552B81AC9A46A00745B93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D552B71AC9A46A00745B93 /* main.m */; };
 		16D552C61AC9A46A00745B93 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16D552C51AC9A46A00745B93 /* Images.xcassets */; };
@@ -233,6 +238,7 @@
 		16D5553B1AC9AB3400745B93 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D555391AC9AB3400745B93 /* Icon.png */; };
 		16F2CA031AC9BA3D007E1441 /* Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F2CA001AC9BA3D007E1441 /* Chat.m */; };
 		16F2CA041AC9BA3D007E1441 /* ChatModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16F2CA011AC9BA3D007E1441 /* ChatModel.xcdatamodeld */; };
+		E9D35F8AA060F09A573F21F4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33ADCF20396CD1353DEEF2FA /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,12 +268,14 @@
 		1636E8C91AD408000083E355 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		1636E8CD1AD55AE60083E355 /* ConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationCell.h; sourceTree = "<group>"; };
 		1636E8CE1AD55AE60083E355 /* ConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationCell.m; sourceTree = "<group>"; };
+		164DC7131AE52905002E5D78 /* RecommandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandCell.swift; sourceTree = "<group>"; };
+		164DC77D1AE6033A002E5D78 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		164DC77E1AE6033A002E5D78 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		1653E1BD1ACA977B001ACCBF /* YDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDAppDelegate.h; sourceTree = "<group>"; };
 		1653E1BE1ACA977B001ACCBF /* YDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDAppDelegate.m; sourceTree = "<group>"; };
 		1653E1C11ACD0B4D001ACCBF /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		16A2BAEF1ACA5AF60063A1B2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		16A2BAF11ACA5B070063A1B2 /* PAL-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PAL-Bridging-Header.h"; sourceTree = "<group>"; };
-		16A2BAF21ACA5B080063A1B2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		16A2BAF31ACA5B080063A1B2 /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		16A2BAF41ACA5B080063A1B2 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		16A2BAF51ACA5B080063A1B2 /* TimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
@@ -301,6 +309,10 @@
 		16A2BB2A1ACA686D0063A1B2 /* YDChatOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDChatOverViewController.m; sourceTree = "<group>"; };
 		16A2BB2B1ACA686D0063A1B2 /* YDConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDConversationViewController.h; sourceTree = "<group>"; };
 		16A2BB2C1ACA686D0063A1B2 /* YDConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDConversationViewController.m; sourceTree = "<group>"; };
+		16D2E79E1AEF4B2300233974 /* SearchHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewController.swift; sourceTree = "<group>"; };
+		16D2E7A01AEF4B3600233974 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		16D2E7A21AEF4B4700233974 /* ResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
+		16D2E7A41AEF4EDD00233974 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		16D3059D1ADD48520053451A /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
 		16D3059E1ADD48520053451A /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
 		16D552B21AC9A46A00745B93 /* PAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -650,6 +662,9 @@
 		16F2C9FF1AC9BA3D007E1441 /* Chat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chat.h; sourceTree = "<group>"; };
 		16F2CA001AC9BA3D007E1441 /* Chat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chat.m; sourceTree = "<group>"; };
 		16F2CA021AC9BA3D007E1441 /* ChatModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChatModel.xcdatamodel; sourceTree = "<group>"; };
+		33ADCF20396CD1353DEEF2FA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		577DDCF753FAD6D5CE56E7EE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		64E2B357F896812FF090D920 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -665,6 +680,7 @@
 				16D554E11AC9A5E700745B93 /* CoreLocation.framework in Frameworks */,
 				16D554DF1AC9A5DB00745B93 /* CFNetwork.framework in Frameworks */,
 				16D554DD1AC9A5D400745B93 /* Security.framework in Frameworks */,
+				E9D35F8AA060F09A573F21F4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +767,34 @@
 			name = ConversationViewController;
 			sourceTree = "<group>";
 		};
+		164DC7121AE528AC002E5D78 /* HomePageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16A2BAF61ACA5B080063A1B2 /* HomePageViewController.swift */,
+				164DC7131AE52905002E5D78 /* RecommandCell.swift */,
+			);
+			name = HomePageViewController;
+			sourceTree = "<group>";
+		};
+		164DC77C1AE60308002E5D78 /* RegisterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				164DC77D1AE6033A002E5D78 /* RegisterViewController.h */,
+				164DC77E1AE6033A002E5D78 /* RegisterViewController.m */,
+			);
+			name = RegisterViewController;
+			sourceTree = "<group>";
+		};
+		164DC7DB1AE77CDE002E5D78 /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16D2E79E1AEF4B2300233974 /* SearchHistoryViewController.swift */,
+				16D2E7A01AEF4B3600233974 /* SearchResultsViewController.swift */,
+				16D2E7A21AEF4B4700233974 /* ResultsCell.swift */,
+			);
+			name = SearchViewController;
+			sourceTree = "<group>";
+		};
 		1653E1C01ACD0B22001ACCBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -781,6 +825,14 @@
 			name = Library;
 			sourceTree = "<group>";
 		};
+		16D2E79B1AEF40C900233974 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16D2E7A41AEF4EDD00233974 /* LoginViewController.swift */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
 		16D3059C1ADD47E40053451A /* ContactViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -799,6 +851,8 @@
 				16D552B41AC9A46A00745B93 /* PAL */,
 				16D552D11AC9A46A00745B93 /* PALTests */,
 				16D552B31AC9A46A00745B93 /* Products */,
+				8B624C13662DDD8871A6894F /* Pods */,
+				48275B567EBA05D191D9180C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1833,14 +1887,16 @@
 		16D5553C1AC9ABCE00745B93 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				16D2E79B1AEF40C900233974 /* LoginViewController */,
+				164DC7DB1AE77CDE002E5D78 /* SearchViewController */,
+				164DC77C1AE60308002E5D78 /* RegisterViewController */,
+				164DC7121AE528AC002E5D78 /* HomePageViewController */,
 				16D3059C1ADD47E40053451A /* ContactViewController */,
 				1636E8CB1AD54F040083E355 /* ConversationViewController */,
 				1636E8C71AD407D50083E355 /* ChatOverViewController */,
-				16A2BAF21ACA5B080063A1B2 /* LoginViewController.swift */,
 				16A2BAF31ACA5B080063A1B2 /* PersonalViewController.swift */,
 				16A2BAF41ACA5B080063A1B2 /* MessageViewController.swift */,
 				16A2BAF51ACA5B080063A1B2 /* TimeViewController.swift */,
-				16A2BAF61ACA5B080063A1B2 /* HomePageViewController.swift */,
 				16A2BAF71ACA5B090063A1B2 /* MyTabBarViewController.swift */,
 				16A2BAF81ACA5B090063A1B2 /* ChatOverViewController.swift */,
 				16A2BAF91ACA5B090063A1B2 /* ContactsViewControllerTableViewController.swift */,
@@ -1856,6 +1912,23 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		48275B567EBA05D191D9180C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33ADCF20396CD1353DEEF2FA /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B624C13662DDD8871A6894F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				64E2B357F896812FF090D920 /* Pods.debug.xcconfig */,
+				577DDCF753FAD6D5CE56E7EE /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1863,9 +1936,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16D552D81AC9A46A00745B93 /* Build configuration list for PBXNativeTarget "PAL" */;
 			buildPhases = (
+				2E24102D159B51A3FEF209CD /* Check Pods Manifest.lock */,
 				16D552AE1AC9A46A00745B93 /* Sources */,
 				16D552AF1AC9A46A00745B93 /* Frameworks */,
 				16D552B01AC9A46A00745B93 /* Resources */,
+				64A5428736C910885D87EBCB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2002,12 +2077,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2E24102D159B51A3FEF209CD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		64A5428736C910885D87EBCB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		16D552AE1AC9A46A00745B93 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				16D554A21AC9A5AD00745B93 /* XMPPTransports.m in Sources */,
+				16D2E7A11AEF4B3600233974 /* SearchResultsViewController.swift in Sources */,
 				16D554951AC9A5AD00745B93 /* XMPPvCardTempTel.m in Sources */,
 				16D5548C1AC9A5AD00745B93 /* XMPPvCardCoreDataStorageObject.m in Sources */,
 				16D554741AC9A5AD00745B93 /* XMPPSystemInputActivityMonitor.m in Sources */,
@@ -2023,7 +2132,6 @@
 				1653E1C21ACD0B4D001ACCBF /* Address.swift in Sources */,
 				16D554BA1AC9A5AD00745B93 /* XMPPTime.m in Sources */,
 				16D5548A1AC9A5AD00745B93 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
-				16A2BAFA1ACA5B090063A1B2 /* LoginViewController.swift in Sources */,
 				16D554C01AC9A5AD00745B93 /* XMPPMessageCarbons.m in Sources */,
 				16A2BB111ACA5BA30063A1B2 /* StringHelper.swift in Sources */,
 				16D554831AC9A5AD00745B93 /* XMPPRoomMemoryStorage.m in Sources */,
@@ -2042,6 +2150,7 @@
 				16D554721AC9A5AD00745B93 /* XMPPUserMemoryStorageObject.m in Sources */,
 				16D554731AC9A5AD00745B93 /* XMPPRoster.m in Sources */,
 				16D554D91AC9A5AD00745B93 /* DDXMLNode.m in Sources */,
+				164DC77F1AE6033A002E5D78 /* RegisterViewController.m in Sources */,
 				16D5546C1AC9A5AD00745B93 /* XMPPResourceCoreDataStorageObject.m in Sources */,
 				16D554D41AC9A5AD00745B93 /* DDMultiFormatter.m in Sources */,
 				16D554851AC9A5AD00745B93 /* XMPPRoomOccupantMemoryStorageObject.m in Sources */,
@@ -2058,6 +2167,7 @@
 				16D554891AC9A5AD00745B93 /* XMPPvCard.xcdatamodeld in Sources */,
 				16A2BB301ACA686D0063A1B2 /* YDSignInViewController.m in Sources */,
 				16D554FB1AC9AA4B00745B93 /* KeychainItemWrapper.m in Sources */,
+				16D2E7A51AEF4EDD00233974 /* LoginViewController.swift in Sources */,
 				16D5547D1AC9A5AD00745B93 /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
 				16A2BB121ACA5BA30063A1B2 /* Alamofire.swift in Sources */,
 				16D554701AC9A5AD00745B93 /* XMPPResourceMemoryStorageObject.m in Sources */,
@@ -2068,6 +2178,7 @@
 				16D554BD1AC9A5AD00745B93 /* XMPPAttentionModule.m in Sources */,
 				16D554B61AC9A5AD00745B93 /* XMPPStreamManagement.m in Sources */,
 				16A2BB321ACA686D0063A1B2 /* YDChatOverViewController.m in Sources */,
+				16D2E79F1AEF4B2300233974 /* SearchHistoryViewController.swift in Sources */,
 				16A2BB2D1ACA686D0063A1B2 /* YDBaseViewController.m in Sources */,
 				16D554531AC9A5AD00745B93 /* XMPPPlainAuthentication.m in Sources */,
 				16D554C91AC9A5AD00745B93 /* XMPPSRVResolver.m in Sources */,
@@ -2121,6 +2232,7 @@
 				16D554991AC9A5AD00745B93 /* XMPPPubSub.m in Sources */,
 				16D554621AC9A5AD00745B93 /* XMPPStream.m in Sources */,
 				16D554861AC9A5AD00745B93 /* XMPPMessage+XEP0045.m in Sources */,
+				16D2E7A31AEF4B4700233974 /* ResultsCell.swift in Sources */,
 				16A2BB011ACA5B090063A1B2 /* ContactsViewControllerTableViewController.swift in Sources */,
 				16D5547B1AC9A5AD00745B93 /* XMPPRoom.xcdatamodeld in Sources */,
 				16A2BB2E1ACA686D0063A1B2 /* YDHomeViewController.m in Sources */,
@@ -2159,6 +2271,7 @@
 				16D554A01AC9A5AD00745B93 /* XMPPMessage+XEP_0085.m in Sources */,
 				16D554591AC9A5AD00745B93 /* NSXMLElement+XMPP.m in Sources */,
 				16D554611AC9A5AD00745B93 /* XMPPPresence.m in Sources */,
+				164DC7141AE52905002E5D78 /* RecommandCell.swift in Sources */,
 				16A2BAFC1ACA5B090063A1B2 /* MessageViewController.swift in Sources */,
 				16D5546B1AC9A5AD00745B93 /* XMPPGroupCoreDataStorageObject.m in Sources */,
 				16D5546E1AC9A5AD00745B93 /* XMPPRosterCoreDataStorage.m in Sources */,
@@ -2277,6 +2390,7 @@
 		};
 		16D552D91AC9A46A00745B93 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64E2B357F896812FF090D920 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -2305,6 +2419,7 @@
 		};
 		16D552DA1AC9A46A00745B93 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 577DDCF753FAD6D5CE56E7EE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

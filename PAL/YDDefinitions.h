@@ -25,7 +25,7 @@ static const float tablewidth  = 270.0f;
 #define kXMPPmyPassword             @"kXMPPmyPassword"
 
 #define kxmppHTTPRegistrationUrl    @"http://openfire.yourdeveloper.net:9090/plugins/userService/userservice?type=add&secret=V3q2GdGx&username=%@&password=%@&name=%@&email=%@"
-#define kXMPPServer                 @"zhoujialeidemacbook-pro.local"
+#define kXMPPServer                 @"120.25.202.14"
 #define kxmppProxyServer            @"zhoujialeidemacbook-pro.local"
 #define kxmppConferenceServer       @"@conference.openfire.yourdeveloper.net"
 #define kxmppSearchServer           @"search.openfire.yourdeveloper.net"

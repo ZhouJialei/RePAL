@@ -33,7 +33,7 @@ class LoginViewController: UIViewController{
         request(.POST,
             serverAddress,        //地址用常量
             parameters: parameters,
-            encoding: .URL).responseJSON{(reques, response, JSON, erro) in
+            encoding: .URL).responseJSON{(request, response, JSON, erro) in
                 //as we know, the return type of JSON is NSDictionary as well
                 //but it's impossible for the compiler to know the type of the 
                 //JSON(the exact type is NSDictionary)'s key and value
@@ -41,7 +41,7 @@ class LoginViewController: UIViewController{
                 //println(response)
                 let response = JSON as NSDictionary
                 let status = response.objectForKey("status") as Int
-                println(status)
+                println(JSON)
                 //then we deal with the response
                 //如果登陆成功，则将用户名密码服务器地址都存入NSUserDefault中
                 //并自动配置自动登陆
@@ -61,6 +61,9 @@ class LoginViewController: UIViewController{
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func returnTapped(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     func saveCredentials() {
         
         let keychain: KeychainItemWrapper = KeychainItemWrapper(identifier: "YDCHAT", accessGroup: nil)
@@ -71,11 +74,6 @@ class LoginViewController: UIViewController{
         self.delegate().credentialsStored()
     }
     
-    
-    @IBAction func returnTapped(sender: AnyObject?) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
