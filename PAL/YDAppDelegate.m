@@ -255,6 +255,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 	
     	[_xmppStream setHostName:kXMPPServer];
     	[_xmppStream setHostPort:5222];
+    
 	
     
 	// You may need to alter these settings depending on the server you're connecting to
@@ -499,6 +500,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 -(void)updateCoreDataWithIncomingMessage:(XMPPMessage *)message
 {
     //determine the sender
+    DDLogInfo(message);
     XMPPUserCoreDataStorageObject *user = [self.xmppRosterStorage userForJID:[message from]
                                                                   xmppStream:self.xmppStream
                                                         managedObjectContext:[self managedObjectContext_roster]];

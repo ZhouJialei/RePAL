@@ -13,8 +13,11 @@ class ResultsCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var experienceLabel: UILabel!
-    @IBOutlet weak var schoolLabel: UILabel!
+    @IBOutlet weak var coursePriceLabel: UILabel!
+    @IBOutlet weak var minNumLabel: UILabel!
     @IBOutlet weak var courseLabel: UILabel!
+    @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var gradeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

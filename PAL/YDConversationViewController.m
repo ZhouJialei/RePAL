@@ -274,9 +274,10 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark UITableView
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [self heightForConversationCellAtIndexPath:indexPath];
-    /*
+ /*
     Chat *currentChatMessage = (Chat *)[self.chats objectAtIndex:indexPath.row];
     
     if (![currentChatMessage.hasMedia boolValue])
@@ -298,8 +299,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         {
         return 100;
         }
-    */
+ */
 }
+
 
 -(CGFloat)heightForConversationCellAtIndexPath:(NSIndexPath *)indexPath {
     static ConversationCell *sizingCell = nil;
@@ -562,6 +564,10 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 -(IBAction)sendMessage:(id)sender
 {
     NSString *messageStr = self.msgText.text;
+    
+#pragma mark warning!!!!!changed
+//    NSString *toStr = [self.conversationJidString stringByReplacingOccurrencesOfString:kXMPPServer withString:kXMPPDomain];
+    
     if([messageStr length] > 0)
         {
             //send chat message
@@ -570,10 +576,11 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
             [body setStringValue:messageStr];
             NSXMLElement *message = [NSXMLElement elementWithName:@"message"];
             [message addAttributeWithName:@"type" stringValue:@"chat"];
+#pragma mark warning!!!!!!changed
             [message addAttributeWithName:@"to" stringValue:self.conversationJidString];
             [message addChild:body];
-            NSXMLElement *status = [NSXMLElement elementWithName:@"active" xmlns:@"http://jabber.org/protocol/chatstates"];
-            [message addChild:status];
+//            NSXMLElement *status = [NSXMLElement elementWithName:@"active" xmlns:@"http://jabber.org/protocol/chatstates"];
+//            [message addChild:status];
             
             [[self appDelegate].xmppStream sendElement:message];
                 // We need to put our own message also in CoreData of course and reload the data

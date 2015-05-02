@@ -21,6 +21,7 @@ class LoginViewController: UIViewController{
         return UIApplication.sharedApplication().delegate as YDAppDelegate
     }
     
+    //登陆
     @IBAction func loginTapped(sender: AnyObject) {
         var userName: String = userTextField.text
         var userPassword: String = passwordTextField.text.md5
@@ -29,7 +30,7 @@ class LoginViewController: UIViewController{
         "password": userPassword]
         
         //MARK: request请求中的服务器地址用serverAddress常量定义，serverAddress定义与address.swift中
-        /*
+        
         request(.POST,
             serverAddress,        //地址用常量
             parameters: parameters,
@@ -54,11 +55,6 @@ class LoginViewController: UIViewController{
                     alertView.show()
                 }
         }
-        */
-        
-        //MARK: hard cord used to check im service
-        self.saveCredentials()
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func returnTapped(sender: UIBarButtonItem) {
@@ -72,11 +68,13 @@ class LoginViewController: UIViewController{
         NSUserDefaults.standardUserDefaults().synchronize()
         keychain.setObject(self.passwordTextField.text, forKey: kSecValueData)  //kSecValueData总是对应password
         self.delegate().credentialsStored()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+       
         // Do any additional setup after loading the view.
     }
 
@@ -84,6 +82,7 @@ class LoginViewController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     /*
     // MARK: - Navigation

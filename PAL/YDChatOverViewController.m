@@ -39,12 +39,16 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 {
 	return (YDAppDelegate *)[[UIApplication sharedApplication] delegate];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self loadData];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    //Add a UITableView
-    [self loadData];
+
     //Add Observer
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newMessageReceived:) name:kNewMessage  object:nil];
 
@@ -290,10 +294,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     fetchedObjects=nil;
     fetchRequest=nil;
     return hist;
-}
--(void)viewWillAppear:(BOOL)animated
-{
-    
 }
 
 - (void)didReceiveMemoryWarning

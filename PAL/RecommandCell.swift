@@ -15,8 +15,7 @@ class RecommandCell: UITableViewCell {
     @IBOutlet weak var schoolLabel: UITextField!
     @IBOutlet weak var courseLabel: UITextField!
     @IBOutlet weak var experienceLabel: UITextField!
-    @IBOutlet weak var integerGradeImage: UIImageView!
-    @IBOutlet weak var decimalGradeImage: UIImageView!
+    @IBOutlet weak var gradeImage: UIImageView!
     @IBOutlet weak var availableImage: UIImageView!
     
     

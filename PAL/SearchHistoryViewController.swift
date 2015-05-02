@@ -10,12 +10,14 @@ import UIKit
 
 class Teacher {
     var name: String = ""
-    var school: String = ""
     var course: String = ""
     var grade: String = ""
     var experience: String = ""
     var avatarImageURL: String = ""
-    
+    var phoneNumber: String = ""
+    var pid: String = ""
+    var coursePrice: String = ""
+    var courseMinNum: String = ""
 }
 
 class SearchHistoryViewController: UITableViewController,UISearchBarDelegate {
@@ -26,9 +28,13 @@ class SearchHistoryViewController: UITableViewController,UISearchBarDelegate {
     // Array to save the results for the cell
     var teacherArray: [Teacher] = []
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.searchBar.text = searchKey
+        searchKey = ""
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -60,8 +66,13 @@ class SearchHistoryViewController: UITableViewController,UISearchBarDelegate {
         var searchString: String = searchBar.text
         let parameters = ["generalsearch": searchString]
         
-        request(.GET, outerNetSearchAddress, parameters: parameters, encoding: .URL).responseJSON({
+        request(.GET, searchAddress, parameters: parameters, encoding: .URL).responseJSON({
             (request, response, JSON, error) in
+            
+            println(JSON)
+            println(response)
+            println(request)
+            println(error)
             
             if response != nil && JSON != nil {
                 
@@ -75,21 +86,21 @@ class SearchHistoryViewController: UITableViewController,UISearchBarDelegate {
                     var teacher: Teacher = Teacher()
                     
                     teacher.name = item.objectForKey("prod_name") as String
-                    
-                    teacher.school = item.objectForKey("good_area") as String
-                    
+                    teacher.coursePrice = item.objectForKey("good_price") as String
+                    teacher.courseMinNum = item.objectForKey("good_minnum") as String
                     teacher.grade = item.objectForKey("prod_grade") as String
-                    
-                    teacher.experience = item.objectForKey("prod_experience") as String
                     
                     var kind = item.objectForKey("good_kind_name") as String
                     var category = item.objectForKey("good_cate_name") as String
                     teacher.course = kind + " " + category
                     
-                    //MARK: wait for the outer Net Server to update
-                    //var preUrl = "http://192.168.1.11/pal_studio/Uploads/head_thumb/User/"
-                    //var avatarUrl = item.objectForKey("prod_head_thumb") as String
-                    //teacher.avatarImageURL = preUrl + avatarUrl
+                    teacher.experience = item.objectForKey("prod_experience") as String
+                    teacher.pid = item.objectForKey("prod_id") as String
+                    
+
+                    var preUrl = "http://192.168.1.11/pal_studio/Uploads/head_thumb/User/"
+                    var avatarUrl = item.objectForKey("prod_head_thumb") as String
+                    teacher.avatarImageURL = preUrl + avatarUrl
                     
                     self.teacherArray.append(teacher)
                 }
@@ -115,6 +126,9 @@ class SearchHistoryViewController: UITableViewController,UISearchBarDelegate {
         }
     }
 
+    @IBAction func returnTapped(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

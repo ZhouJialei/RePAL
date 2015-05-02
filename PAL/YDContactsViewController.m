@@ -234,7 +234,7 @@ static NSString * const CellIdentifier = @"ContactCell";
         }
 	//objectAtIndexPath:给出一个index，返回该row所显示的NSManagedObject
 	XMPPUserCoreDataStorageObject *user = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-	
+    //将该NSManagedObject所存的displayname赋值给当前cell.nameLabel
 	cell.nameLabel.text = user.displayName;
 	[self configurePhotoForCell:cell user:user];
 	
@@ -262,10 +262,12 @@ static NSString * const CellIdentifier = @"ContactCell";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"goConversation"]) {
         YDConversationViewController *conversationVC = (YDConversationViewController *)segue.destinationViewController;
+        //获得所选cell的indexPath
         NSIndexPath *indexPath = [self.mtableView indexPathForCell:sender];
+        //返回该row所显示的NSManagedObject
         XMPPUserCoreDataStorageObject *user = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         DDLogInfo(@"user %@",user.jidStr);
-        
+        //将该user.jidStr发给conversationVC
         [conversationVC showConversationForJIDString:user.jidStr];
         /*
         Chat *chat = [self.chats objectAtIndex:indexPath.row];

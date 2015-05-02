@@ -23,13 +23,9 @@
 		1636E8CC1AD552C50083E355 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D5544D1AC9A5AD00745B93 /* libidn.a */; };
 		1636E8CF1AD55AE60083E355 /* ConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636E8CE1AD55AE60083E355 /* ConversationCell.m */; };
 		164DC7141AE52905002E5D78 /* RecommandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164DC7131AE52905002E5D78 /* RecommandCell.swift */; };
-		164DC77F1AE6033A002E5D78 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 164DC77E1AE6033A002E5D78 /* RegisterViewController.m */; };
 		1653E1BF1ACA977B001ACCBF /* YDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1653E1BE1ACA977B001ACCBF /* YDAppDelegate.m */; };
 		1653E1C21ACD0B4D001ACCBF /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653E1C11ACD0B4D001ACCBF /* Address.swift */; };
 		16A2BAF01ACA5AF60063A1B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A2BAEF1ACA5AF60063A1B2 /* Main.storyboard */; };
-		16A2BAFB1ACA5B090063A1B2 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BAF31ACA5B080063A1B2 /* PersonalViewController.swift */; };
-		16A2BAFC1ACA5B090063A1B2 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BAF41ACA5B080063A1B2 /* MessageViewController.swift */; };
-		16A2BAFD1ACA5B090063A1B2 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BAF51ACA5B080063A1B2 /* TimeViewController.swift */; };
 		16A2BAFE1ACA5B090063A1B2 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BAF61ACA5B080063A1B2 /* HomePageViewController.swift */; };
 		16A2BAFF1ACA5B090063A1B2 /* MyTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BAF71ACA5B090063A1B2 /* MyTabBarViewController.swift */; };
 		16A2BB001ACA5B090063A1B2 /* ChatOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BAF81ACA5B090063A1B2 /* ChatOverViewController.swift */; };
@@ -53,10 +49,29 @@
 		16A2BB311ACA686D0063A1B2 /* YDContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BB281ACA686D0063A1B2 /* YDContactsViewController.m */; };
 		16A2BB321ACA686D0063A1B2 /* YDChatOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BB2A1ACA686D0063A1B2 /* YDChatOverViewController.m */; };
 		16A2BB331ACA686D0063A1B2 /* YDConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A2BB2C1ACA686D0063A1B2 /* YDConversationViewController.m */; };
-		16D2E79F1AEF4B2300233974 /* SearchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E79E1AEF4B2300233974 /* SearchHistoryViewController.swift */; };
+		16B2C07D1AF2F4BD005515EB /* TimeLineDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B2C07C1AF2F4BD005515EB /* TimeLineDetailController.swift */; };
+		16B2C07F1AF2F4D2005515EB /* TimeLineDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B2C07E1AF2F4D2005515EB /* TimeLineDetailCell.swift */; };
+		16B2C0811AF2FECC005515EB /* SearchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B2C0801AF2FECC005515EB /* SearchHistoryViewController.swift */; };
 		16D2E7A11AEF4B3600233974 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7A01AEF4B3600233974 /* SearchResultsViewController.swift */; };
 		16D2E7A31AEF4B4700233974 /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7A21AEF4B4700233974 /* ResultsCell.swift */; };
 		16D2E7A51AEF4EDD00233974 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7A41AEF4EDD00233974 /* LoginViewController.swift */; };
+		16D2E7A71AF0AB7C00233974 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7A61AF0AB7C00233974 /* RegisterViewController.swift */; };
+		16D2E7A91AF0B29300233974 /* RoleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7A81AF0B29300233974 /* RoleType.swift */; };
+		16D2E7AC1AF0D68600233974 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7AB1AF0D68600233974 /* PersonalViewController.swift */; };
+		16D2E7B11AF1F94400233974 /* ad1_320.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D2E7AE1AF1F94400233974 /* ad1_320.png */; };
+		16D2E7B21AF1F94400233974 /* ad2_320.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D2E7AF1AF1F94400233974 /* ad2_320.png */; };
+		16D2E7B31AF1F94400233974 /* ad3_320.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D2E7B01AF1F94400233974 /* ad3_320.png */; };
+		16D2E7B51AF1FA5700233974 /* searching.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D2E7B41AF1FA5700233974 /* searching.png */; };
+		16D2E7B71AF1FB6B00233974 /* recommandTeacher.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D2E7B61AF1FB6B00233974 /* recommandTeacher.png */; };
+		16D2E7BA1AF2045400233974 /* 4_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D2E7B81AF2045400233974 /* 4_9.png */; };
+		16D2E7BB1AF2045400233974 /* available.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D2E7B91AF2045400233974 /* available.png */; };
+		16D2E7BF1AF2046000233974 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16D2E7BC1AF2046000233974 /* 1.jpg */; };
+		16D2E7C01AF2046000233974 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16D2E7BD1AF2046000233974 /* 2.jpg */; };
+		16D2E7C11AF2046000233974 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16D2E7BE1AF2046000233974 /* 3.jpg */; };
+		16D2E7C51AF262D400233974 /* CourseInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7C41AF262D400233974 /* CourseInfoCell.swift */; };
+		16D2E7CB1AF28A6600233974 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7CA1AF28A6600233974 /* SettingViewController.swift */; };
+		16D2E7D01AF28C9500233974 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7CF1AF28C9500233974 /* TimeLineViewController.swift */; };
+		16D2E7D21AF2EAD300233974 /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D2E7D11AF2EAD300233974 /* TimeLineCell.swift */; };
 		16D3059F1ADD48520053451A /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D3059E1ADD48520053451A /* ContactCell.m */; };
 		16D552B81AC9A46A00745B93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D552B71AC9A46A00745B93 /* main.m */; };
 		16D552C61AC9A46A00745B93 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16D552C51AC9A46A00745B93 /* Images.xcassets */; };
@@ -269,16 +284,11 @@
 		1636E8CD1AD55AE60083E355 /* ConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationCell.h; sourceTree = "<group>"; };
 		1636E8CE1AD55AE60083E355 /* ConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationCell.m; sourceTree = "<group>"; };
 		164DC7131AE52905002E5D78 /* RecommandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandCell.swift; sourceTree = "<group>"; };
-		164DC77D1AE6033A002E5D78 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		164DC77E1AE6033A002E5D78 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		1653E1BD1ACA977B001ACCBF /* YDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDAppDelegate.h; sourceTree = "<group>"; };
 		1653E1BE1ACA977B001ACCBF /* YDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDAppDelegate.m; sourceTree = "<group>"; };
 		1653E1C11ACD0B4D001ACCBF /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		16A2BAEF1ACA5AF60063A1B2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		16A2BAF11ACA5B070063A1B2 /* PAL-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PAL-Bridging-Header.h"; sourceTree = "<group>"; };
-		16A2BAF31ACA5B080063A1B2 /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
-		16A2BAF41ACA5B080063A1B2 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
-		16A2BAF51ACA5B080063A1B2 /* TimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		16A2BAF61ACA5B080063A1B2 /* HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		16A2BAF71ACA5B090063A1B2 /* MyTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarViewController.swift; sourceTree = "<group>"; };
 		16A2BAF81ACA5B090063A1B2 /* ChatOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatOverViewController.swift; sourceTree = "<group>"; };
@@ -309,10 +319,29 @@
 		16A2BB2A1ACA686D0063A1B2 /* YDChatOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDChatOverViewController.m; sourceTree = "<group>"; };
 		16A2BB2B1ACA686D0063A1B2 /* YDConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDConversationViewController.h; sourceTree = "<group>"; };
 		16A2BB2C1ACA686D0063A1B2 /* YDConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDConversationViewController.m; sourceTree = "<group>"; };
-		16D2E79E1AEF4B2300233974 /* SearchHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewController.swift; sourceTree = "<group>"; };
+		16B2C07C1AF2F4BD005515EB /* TimeLineDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineDetailController.swift; sourceTree = "<group>"; };
+		16B2C07E1AF2F4D2005515EB /* TimeLineDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineDetailCell.swift; sourceTree = "<group>"; };
+		16B2C0801AF2FECC005515EB /* SearchHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewController.swift; sourceTree = "<group>"; };
 		16D2E7A01AEF4B3600233974 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		16D2E7A21AEF4B4700233974 /* ResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
 		16D2E7A41AEF4EDD00233974 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		16D2E7A61AF0AB7C00233974 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		16D2E7A81AF0B29300233974 /* RoleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleType.swift; sourceTree = "<group>"; };
+		16D2E7AB1AF0D68600233974 /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		16D2E7AE1AF1F94400233974 /* ad1_320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ad1_320.png; sourceTree = "<group>"; };
+		16D2E7AF1AF1F94400233974 /* ad2_320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ad2_320.png; sourceTree = "<group>"; };
+		16D2E7B01AF1F94400233974 /* ad3_320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ad3_320.png; sourceTree = "<group>"; };
+		16D2E7B41AF1FA5700233974 /* searching.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searching.png; sourceTree = "<group>"; };
+		16D2E7B61AF1FB6B00233974 /* recommandTeacher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommandTeacher.png; sourceTree = "<group>"; };
+		16D2E7B81AF2045400233974 /* 4_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4_9.png; sourceTree = "<group>"; };
+		16D2E7B91AF2045400233974 /* available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = available.png; sourceTree = "<group>"; };
+		16D2E7BC1AF2046000233974 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		16D2E7BD1AF2046000233974 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		16D2E7BE1AF2046000233974 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		16D2E7C41AF262D400233974 /* CourseInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseInfoCell.swift; sourceTree = "<group>"; };
+		16D2E7CA1AF28A6600233974 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		16D2E7CF1AF28C9500233974 /* TimeLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
+		16D2E7D11AF2EAD300233974 /* TimeLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineCell.swift; sourceTree = "<group>"; };
 		16D3059D1ADD48520053451A /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
 		16D3059E1ADD48520053451A /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
 		16D552B21AC9A46A00745B93 /* PAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -770,6 +799,7 @@
 		164DC7121AE528AC002E5D78 /* HomePageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				16D2E7AD1AF1F93300233974 /* image */,
 				16A2BAF61ACA5B080063A1B2 /* HomePageViewController.swift */,
 				164DC7131AE52905002E5D78 /* RecommandCell.swift */,
 			);
@@ -779,8 +809,7 @@
 		164DC77C1AE60308002E5D78 /* RegisterViewController */ = {
 			isa = PBXGroup;
 			children = (
-				164DC77D1AE6033A002E5D78 /* RegisterViewController.h */,
-				164DC77E1AE6033A002E5D78 /* RegisterViewController.m */,
+				16D2E7A61AF0AB7C00233974 /* RegisterViewController.swift */,
 			);
 			name = RegisterViewController;
 			sourceTree = "<group>";
@@ -788,7 +817,7 @@
 		164DC7DB1AE77CDE002E5D78 /* SearchViewController */ = {
 			isa = PBXGroup;
 			children = (
-				16D2E79E1AEF4B2300233974 /* SearchHistoryViewController.swift */,
+				16B2C0801AF2FECC005515EB /* SearchHistoryViewController.swift */,
 				16D2E7A01AEF4B3600233974 /* SearchResultsViewController.swift */,
 				16D2E7A21AEF4B4700233974 /* ResultsCell.swift */,
 			);
@@ -799,6 +828,7 @@
 			isa = PBXGroup;
 			children = (
 				1653E1C11ACD0B4D001ACCBF /* Address.swift */,
+				16D2E7A81AF0B29300233974 /* RoleType.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -831,6 +861,76 @@
 				16D2E7A41AEF4EDD00233974 /* LoginViewController.swift */,
 			);
 			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		16D2E7AA1AF0D66200233974 /* PersonalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16D2E7AB1AF0D68600233974 /* PersonalViewController.swift */,
+				16D2E7C41AF262D400233974 /* CourseInfoCell.swift */,
+			);
+			name = PersonalViewController;
+			sourceTree = "<group>";
+		};
+		16D2E7AD1AF1F93300233974 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				16D2E7BC1AF2046000233974 /* 1.jpg */,
+				16D2E7BD1AF2046000233974 /* 2.jpg */,
+				16D2E7BE1AF2046000233974 /* 3.jpg */,
+				16D2E7B81AF2045400233974 /* 4_9.png */,
+				16D2E7B91AF2045400233974 /* available.png */,
+				16D2E7B61AF1FB6B00233974 /* recommandTeacher.png */,
+				16D2E7B41AF1FA5700233974 /* searching.png */,
+				16D2E7AE1AF1F94400233974 /* ad1_320.png */,
+				16D2E7AF1AF1F94400233974 /* ad2_320.png */,
+				16D2E7B01AF1F94400233974 /* ad3_320.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+		16D2E7C71AF2844500233974 /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16D2E7CA1AF28A6600233974 /* SettingViewController.swift */,
+			);
+			name = SettingViewController;
+			sourceTree = "<group>";
+		};
+		16D2E7CC1AF28C3700233974 /* OtherViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				16A2BAF81ACA5B090063A1B2 /* ChatOverViewController.swift */,
+				16A2BAF91ACA5B090063A1B2 /* ContactsViewControllerTableViewController.swift */,
+				16A2BB1F1ACA686D0063A1B2 /* YDBaseViewController.h */,
+				16A2BB201ACA686D0063A1B2 /* YDBaseViewController.m */,
+				16A2BB211ACA686D0063A1B2 /* YDHomeViewController.h */,
+				16A2BB221ACA686D0063A1B2 /* YDHomeViewController.m */,
+				16A2BB231ACA686D0063A1B2 /* YDSettingsViewController.h */,
+				16A2BB241ACA686D0063A1B2 /* YDSettingsViewController.m */,
+				16A2BB251ACA686D0063A1B2 /* YDSignInViewController.h */,
+				16A2BB261ACA686D0063A1B2 /* YDSignInViewController.m */,
+			);
+			name = OtherViewControllers;
+			sourceTree = "<group>";
+		};
+		16D2E7CD1AF28C5400233974 /* TabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16A2BAF71ACA5B090063A1B2 /* MyTabBarViewController.swift */,
+			);
+			name = TabBarViewController;
+			sourceTree = "<group>";
+		};
+		16D2E7CE1AF28C7400233974 /* TimeLineViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16D2E7CF1AF28C9500233974 /* TimeLineViewController.swift */,
+				16D2E7D11AF2EAD300233974 /* TimeLineCell.swift */,
+				16B2C07C1AF2F4BD005515EB /* TimeLineDetailController.swift */,
+				16B2C07E1AF2F4D2005515EB /* TimeLineDetailCell.swift */,
+			);
+			name = TimeLineViewController;
 			sourceTree = "<group>";
 		};
 		16D3059C1ADD47E40053451A /* ContactViewController */ = {
@@ -1887,6 +1987,11 @@
 		16D5553C1AC9ABCE00745B93 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				16D2E7CE1AF28C7400233974 /* TimeLineViewController */,
+				16D2E7CD1AF28C5400233974 /* TabBarViewController */,
+				16D2E7CC1AF28C3700233974 /* OtherViewControllers */,
+				16D2E7C71AF2844500233974 /* SettingViewController */,
+				16D2E7AA1AF0D66200233974 /* PersonalViewController */,
 				16D2E79B1AEF40C900233974 /* LoginViewController */,
 				164DC7DB1AE77CDE002E5D78 /* SearchViewController */,
 				164DC77C1AE60308002E5D78 /* RegisterViewController */,
@@ -1894,20 +1999,6 @@
 				16D3059C1ADD47E40053451A /* ContactViewController */,
 				1636E8CB1AD54F040083E355 /* ConversationViewController */,
 				1636E8C71AD407D50083E355 /* ChatOverViewController */,
-				16A2BAF31ACA5B080063A1B2 /* PersonalViewController.swift */,
-				16A2BAF41ACA5B080063A1B2 /* MessageViewController.swift */,
-				16A2BAF51ACA5B080063A1B2 /* TimeViewController.swift */,
-				16A2BAF71ACA5B090063A1B2 /* MyTabBarViewController.swift */,
-				16A2BAF81ACA5B090063A1B2 /* ChatOverViewController.swift */,
-				16A2BAF91ACA5B090063A1B2 /* ContactsViewControllerTableViewController.swift */,
-				16A2BB1F1ACA686D0063A1B2 /* YDBaseViewController.h */,
-				16A2BB201ACA686D0063A1B2 /* YDBaseViewController.m */,
-				16A2BB211ACA686D0063A1B2 /* YDHomeViewController.h */,
-				16A2BB221ACA686D0063A1B2 /* YDHomeViewController.m */,
-				16A2BB231ACA686D0063A1B2 /* YDSettingsViewController.h */,
-				16A2BB241ACA686D0063A1B2 /* YDSettingsViewController.m */,
-				16A2BB251ACA686D0063A1B2 /* YDSignInViewController.h */,
-				16A2BB261ACA686D0063A1B2 /* YDSignInViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -2021,6 +2112,7 @@
 				16A2BB171ACA600D0063A1B2 /* welcome.png in Resources */,
 				16D555361AC9AB0B00745B93 /* groupicon.png in Resources */,
 				16D554DA1AC9A5AD00745B93 /* build-libidn.sh in Resources */,
+				16D2E7B71AF1FB6B00233974 /* recommandTeacher.png in Resources */,
 				16D555351AC9AB0B00745B93 /* contacts@2x.png in Resources */,
 				1636E88C1AD2D6CC0083E355 /* geography.png in Resources */,
 				16A2BB091ACA5B320063A1B2 /* photo2.png in Resources */,
@@ -2032,8 +2124,10 @@
 				16D555371AC9AB0B00745B93 /* groupicon@2x.png in Resources */,
 				16D555341AC9AB0B00745B93 /* contacts.png in Resources */,
 				16D5553B1AC9AB3400745B93 /* Icon.png in Resources */,
+				16D2E7BB1AF2045400233974 /* available.png in Resources */,
 				1636E8881AD2D5560083E355 /* biology.png in Resources */,
 				16D555301AC9AB0B00745B93 /* settings.png in Resources */,
+				16D2E7B21AF1F94400233974 /* ad2_320.png in Resources */,
 				16A2BB1B1ACA60150063A1B2 /* flag.png in Resources */,
 				1636E8841AD2D4BC0083E355 /* English.png in Resources */,
 				16D5550B1AC9AA9500745B93 /* arrow.png in Resources */,
@@ -2045,10 +2139,14 @@
 				16A2BB151ACA5ECD0063A1B2 /* LaunchScreen.xib in Resources */,
 				16D554D51AC9A5AD00745B93 /* README.txt in Resources */,
 				16A2BB0D1ACA5B320063A1B2 /* slow.png in Resources */,
+				16D2E7B31AF1F94400233974 /* ad3_320.png in Resources */,
 				1636E86F1AD2CDD10083E355 /* contactView.png in Resources */,
 				16D5550C1AC9AA9500745B93 /* appbg.png in Resources */,
+				16D2E7B51AF1FA5700233974 /* searching.png in Resources */,
+				16D2E7B11AF1F94400233974 /* ad1_320.png in Resources */,
 				16D555331AC9AB0B00745B93 /* chat@2x.png in Resources */,
 				16D552C61AC9A46A00745B93 /* Images.xcassets in Resources */,
+				16D2E7BF1AF2046000233974 /* 1.jpg in Resources */,
 				1636E8801AD2D3200083E355 /* math.png in Resources */,
 				16D555081AC9AA9500745B93 /* leftballoon.png in Resources */,
 				1636E88E1AD2D7120083E355 /* category.png in Resources */,
@@ -2057,9 +2155,12 @@
 				1636E8821AD2D4560083E355 /* chinese.png in Resources */,
 				1636E88A1AD2D5B20083E355 /* physics.png in Resources */,
 				1636E86C1AD2CD4C0083E355 /* timeLine.png in Resources */,
+				16D2E7BA1AF2045400233974 /* 4_9.png in Resources */,
 				16D555321AC9AB0B00745B93 /* chat.png in Resources */,
+				16D2E7C01AF2046000233974 /* 2.jpg in Resources */,
 				16A2BB0B1ACA5B320063A1B2 /* photo4.png in Resources */,
 				16D555091AC9AA9500745B93 /* rightballoonred.png in Resources */,
+				16D2E7C11AF2046000233974 /* 3.jpg in Resources */,
 				16D555101AC9AA9500745B93 /* emptyavatar.png in Resources */,
 				16D555071AC9AA9500745B93 /* sendbutton.png in Resources */,
 				1636E8691AD2CB450083E355 /* homePage.png in Resources */,
@@ -2140,7 +2241,6 @@
 				16D554B21AC9A5AD00745B93 /* XMPPMessageDeliveryReceipts.m in Sources */,
 				16D554A61AC9A5AD00745B93 /* XMPPCapsCoreDataStorageObject.m in Sources */,
 				16D5544F1AC9A5AD00745B93 /* XMPPAnonymousAuthentication.m in Sources */,
-				16A2BAFB1ACA5B090063A1B2 /* PersonalViewController.swift in Sources */,
 				16D554931AC9A5AD00745B93 /* XMPPvCardTempLabel.m in Sources */,
 				16D554521AC9A5AD00745B93 /* XMPPDigestMD5Authentication.m in Sources */,
 				16D5546F1AC9A5AD00745B93 /* XMPPUserCoreDataStorageObject.m in Sources */,
@@ -2150,7 +2250,6 @@
 				16D554721AC9A5AD00745B93 /* XMPPUserMemoryStorageObject.m in Sources */,
 				16D554731AC9A5AD00745B93 /* XMPPRoster.m in Sources */,
 				16D554D91AC9A5AD00745B93 /* DDXMLNode.m in Sources */,
-				164DC77F1AE6033A002E5D78 /* RegisterViewController.m in Sources */,
 				16D5546C1AC9A5AD00745B93 /* XMPPResourceCoreDataStorageObject.m in Sources */,
 				16D554D41AC9A5AD00745B93 /* DDMultiFormatter.m in Sources */,
 				16D554851AC9A5AD00745B93 /* XMPPRoomOccupantMemoryStorageObject.m in Sources */,
@@ -2165,8 +2264,10 @@
 				16D554911AC9A5AD00745B93 /* XMPPvCardTempBase.m in Sources */,
 				16D554AE1AC9A5AD00745B93 /* XMPPvCardAvatarModule.m in Sources */,
 				16D554891AC9A5AD00745B93 /* XMPPvCard.xcdatamodeld in Sources */,
+				16B2C07D1AF2F4BD005515EB /* TimeLineDetailController.swift in Sources */,
 				16A2BB301ACA686D0063A1B2 /* YDSignInViewController.m in Sources */,
 				16D554FB1AC9AA4B00745B93 /* KeychainItemWrapper.m in Sources */,
+				16D2E7D21AF2EAD300233974 /* TimeLineCell.swift in Sources */,
 				16D2E7A51AEF4EDD00233974 /* LoginViewController.swift in Sources */,
 				16D5547D1AC9A5AD00745B93 /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
 				16A2BB121ACA5BA30063A1B2 /* Alamofire.swift in Sources */,
@@ -2177,12 +2278,13 @@
 				16D554821AC9A5AD00745B93 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				16D554BD1AC9A5AD00745B93 /* XMPPAttentionModule.m in Sources */,
 				16D554B61AC9A5AD00745B93 /* XMPPStreamManagement.m in Sources */,
+				16D2E7D01AF28C9500233974 /* TimeLineViewController.swift in Sources */,
 				16A2BB321ACA686D0063A1B2 /* YDChatOverViewController.m in Sources */,
-				16D2E79F1AEF4B2300233974 /* SearchHistoryViewController.swift in Sources */,
 				16A2BB2D1ACA686D0063A1B2 /* YDBaseViewController.m in Sources */,
 				16D554531AC9A5AD00745B93 /* XMPPPlainAuthentication.m in Sources */,
 				16D554C91AC9A5AD00745B93 /* XMPPSRVResolver.m in Sources */,
 				16D554561AC9A5AD00745B93 /* XMPPXOAuth2Google.m in Sources */,
+				16D2E7CB1AF28A6600233974 /* SettingViewController.swift in Sources */,
 				16D554D61AC9A5AD00745B93 /* NSString+DDXML.m in Sources */,
 				16D554761AC9A5AD00745B93 /* XMPPIQ+JabberRPCResonse.m in Sources */,
 				16D554D01AC9A5AD00745B93 /* DDLog.m in Sources */,
@@ -2245,7 +2347,9 @@
 				16D5549D1AC9A5AD00745B93 /* XMPPRegistration.m in Sources */,
 				16D5549F1AC9A5AD00745B93 /* XMPPDateTimeProfiles.m in Sources */,
 				16D554A71AC9A5AD00745B93 /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
+				16D2E7A91AF0B29300233974 /* RoleType.swift in Sources */,
 				16D554C31AC9A5AD00745B93 /* XMPPMessage+XEP_0333.m in Sources */,
+				16D2E7AC1AF0D68600233974 /* PersonalViewController.swift in Sources */,
 				16D554751AC9A5AD00745B93 /* XMPPIQ+JabberRPC.m in Sources */,
 				16D5548F1AC9A5AD00745B93 /* XMPPvCardTempAdr.m in Sources */,
 				16F2CA041AC9BA3D007E1441 /* ChatModel.xcdatamodeld in Sources */,
@@ -2254,12 +2358,12 @@
 				16D554AB1AC9A5AD00745B93 /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */,
 				16D554581AC9A5AD00745B93 /* NSNumber+XMPP.m in Sources */,
 				16D554C71AC9A5AD00745B93 /* RFImageToDataTransformer.m in Sources */,
-				16A2BAFD1ACA5B090063A1B2 /* TimeViewController.swift in Sources */,
 				16D554881AC9A5AD00745B93 /* XMPPRoom.m in Sources */,
 				16D554711AC9A5AD00745B93 /* XMPPRosterMemoryStorage.m in Sources */,
 				16D554B01AC9A5AD00745B93 /* XMPPPresence+XEP_0172.m in Sources */,
 				16D554CB1AC9A5AD00745B93 /* XMPPTimer.m in Sources */,
 				16D554971AC9A5AD00745B93 /* XMPPResultSet.m in Sources */,
+				16B2C0811AF2FECC005515EB /* SearchHistoryViewController.swift in Sources */,
 				16D5547E1AC9A5AD00745B93 /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
 				16D554901AC9A5AD00745B93 /* XMPPvCardTempAdrTypes.m in Sources */,
 				16D554F71AC9AA2100745B93 /* NSDate-Utilities.m in Sources */,
@@ -2267,12 +2371,13 @@
 				16D554A41AC9A5AD00745B93 /* XMPPCapabilities.xcdatamodel in Sources */,
 				16D5546D1AC9A5AD00745B93 /* XMPPRoster.xcdatamodel in Sources */,
 				1653E1BF1ACA977B001ACCBF /* YDAppDelegate.m in Sources */,
+				16D2E7C51AF262D400233974 /* CourseInfoCell.swift in Sources */,
 				16D554801AC9A5AD00745B93 /* XMPPRoomHybridStorage.m in Sources */,
 				16D554A01AC9A5AD00745B93 /* XMPPMessage+XEP_0085.m in Sources */,
 				16D554591AC9A5AD00745B93 /* NSXMLElement+XMPP.m in Sources */,
+				16B2C07F1AF2F4D2005515EB /* TimeLineDetailCell.swift in Sources */,
 				16D554611AC9A5AD00745B93 /* XMPPPresence.m in Sources */,
 				164DC7141AE52905002E5D78 /* RecommandCell.swift in Sources */,
-				16A2BAFC1ACA5B090063A1B2 /* MessageViewController.swift in Sources */,
 				16D5546B1AC9A5AD00745B93 /* XMPPGroupCoreDataStorageObject.m in Sources */,
 				16D5546E1AC9A5AD00745B93 /* XMPPRosterCoreDataStorage.m in Sources */,
 				16D554501AC9A5AD00745B93 /* XMPPDeprecatedDigestAuthentication.m in Sources */,
@@ -2287,6 +2392,7 @@
 				16D554C21AC9A5AD00745B93 /* XMPPMessage+XEP_0308.m in Sources */,
 				16D554661AC9A5AD00745B93 /* XMPPIncomingFileTransfer.m in Sources */,
 				16D554CA1AC9A5AD00745B93 /* XMPPStringPrep.m in Sources */,
+				16D2E7A71AF0AB7C00233974 /* RegisterViewController.swift in Sources */,
 				16D554781AC9A5AD00745B93 /* XMPPIQ+LastActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

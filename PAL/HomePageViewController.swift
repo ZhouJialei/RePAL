@@ -11,20 +11,80 @@ import UIKit
 //页面跳转已经在storyboard中做了 不要再画蛇添足了！！！
 //否则会引发window hierarchy问题
 
+var searchKey = ""
+
+class RecommandTeacher {
+    // MARK: TODO: change the portraitName to the url
+    var portraitName: String = ""
+    var name: String = ""
+    var school: String = ""
+    var course: String = ""
+    var experience: String = ""
+    // MARK: TODO: change the gradeName to the url
+    var gradeName: String = ""
+    var availableImageName: String = ""
+}
+
 class HomePageViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource{
 
+    //////////////////////////////////////////
+    // Array to fill the recommand tableView
+    var recommandArray: [RecommandTeacher] = [RecommandTeacher]()
+    
+    
+    
+    ////////////////////////////////////
+    // MARK: bounce
     var pageImages: [UIImage] = []
     var pageViews: [UIImageView?] = []
     var timer: NSTimer!
-    var recommandArray: [RecommandCell] = []
     
     @IBOutlet weak var recommandTableView: UITableView!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
     
+    // Array to save the filter results
+    var filterArray: [NSDictionary] = []
+    
+    // Array to save the results for the cell
+    var teacherArray: [Teacher] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        //////////////////////////////
+        var recommandTeacher = RecommandTeacher()
+        recommandTeacher.portraitName = "1.jpg"
+        recommandTeacher.name = "赵小龙"
+        recommandTeacher.school = "西安电子科技大学"
+        recommandTeacher.course = "高中英语 初中数学"
+        recommandTeacher.gradeName = "4_9.png"
+        recommandTeacher.experience = "家教经验 一年"
+        recommandTeacher.availableImageName = "available.png"
+        recommandArray.append(recommandTeacher)
+        
+        var recommandTeacher1 = RecommandTeacher()
+        recommandTeacher1.portraitName = "2.jpg"
+        recommandTeacher1.name = "王小兵"
+        recommandTeacher1.school = "西安电子科技大学"
+        recommandTeacher1.course = "初中英语 高中数学"
+        recommandTeacher1.gradeName = "4_9.png"
+        recommandTeacher1.experience = "家教经验 一年"
+        recommandTeacher1.availableImageName = "available.png"
+        recommandArray.append(recommandTeacher1)
+        
+        var recommandTeacher2 = RecommandTeacher()
+        recommandTeacher2.portraitName = "3.jpg"
+        recommandTeacher2.name = "王小琦"
+        recommandTeacher2.school = "西安电子科技大学"
+        recommandTeacher2.course = "高中化学 初中英语"
+        recommandTeacher2.gradeName = "4_9.png"
+        recommandTeacher2.experience = "家教经验 二年"
+        recommandTeacher2.availableImageName = "available.png"
+        recommandArray.append(recommandTeacher2)
+        
+        /////////////////////////////////////////////////
+
+
     }
    
     override func viewDidAppear(animated: Bool) {
@@ -36,11 +96,11 @@ class HomePageViewController: UIViewController, UIScrollViewDelegate, UITableVie
         var name: String
         var timer: NSTimer!
         
-        let totalCount: Int = 5
+        let totalCount: Int = 3
         
         for var index = 0; index < totalCount; index++ {
             imageX = CGFloat(index) * imageW
-            let imageView = UIImageView(image: UIImage(named: "photo\(index+1).png"))
+            let imageView = UIImageView(image: UIImage(named: "ad\(index+1)_320.png"))
             imageView.frame = CGRectMake(imageX, imageY, imageW, imageH)
             
             self.scrollView.showsHorizontalScrollIndicator = false
@@ -59,7 +119,7 @@ class HomePageViewController: UIViewController, UIScrollViewDelegate, UITableVie
     func nextImage() {
         
         var page: Int = self.pageControl.currentPage
-        if page == 4 {
+        if page == 2 {
             page = 0
         }else{
             page++
@@ -94,6 +154,8 @@ class HomePageViewController: UIViewController, UIScrollViewDelegate, UITableVie
     func removeTimer() {
         self.timer.invalidate()
     }
+    
+    ////////////////////////////////////////////////////
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -101,9 +163,7 @@ class HomePageViewController: UIViewController, UIScrollViewDelegate, UITableVie
     }
     
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-        if viewController.isKindOfClass(TimeViewController){
-            return false
-        }
+
         return true
     }
     
@@ -119,23 +179,30 @@ class HomePageViewController: UIViewController, UIScrollViewDelegate, UITableVie
     
     //MARK: TODO
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let CellIdentifier: String = "RecommandPerson"
+        let cell = tableView.dequeueReusableCellWithIdentifier("RecommandPerson") as RecommandCell
         
-        var cell: RecommandCell? = tableView.dequeueReusableCellWithIdentifier (CellIdentifier, forIndexPath: indexPath) as? RecommandCell
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier) as? RecommandCell
-        }
-        //MARK:TODO
-        var portraitImageURL = ""
-        request(.GET, portraitImageURL).response() {
-            (_, _, data, _) in
-            
-            let portraitImage = UIImage(data: data! as NSData)
-            cell?.portraitImage.image = portraitImage
-        }
+        let index = indexPath.row
+        println(index)
         
-        return cell!
+        cell.portraitImage.image = UIImage(named: recommandArray[index].portraitName)
+        cell.nameLabel.text = recommandArray[index].name
+        cell.schoolLabel.text = recommandArray[index].school
+        cell.courseLabel.text = recommandArray[index].course
+        cell.experienceLabel.text = recommandArray[index].experience
+        cell.gradeImage.image = UIImage(named: recommandArray[index].gradeName)
+        cell.availableImage.image = UIImage(named: recommandArray[index].availableImageName)
+        
+        return cell
     }
+    
+    
+    // MARK: Quick search methods
+    
+    @IBAction func goChineseSearch(sender: UIButton) {
+        searchKey = "语文"
+        self.performSegueWithIdentifier("goQuickSearch", sender: self)
+    }
+    
     
     //use dispatch to do the segue after the viewDidLoad
 

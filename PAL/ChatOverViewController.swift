@@ -193,7 +193,7 @@ class ChatOverViewController: UITableViewController, UITableViewDelegate, UITabl
         self.navigationController?.pushViewController(self.conversationVC!, animated: true)
     }
     
-    func configurePhotoForCell(cell: UITableViewCell, user user: XMPPUserCoreDataStorageObject) -> UIImage{
+    func configurePhotoForCell(cell: UITableViewCell, user: XMPPUserCoreDataStorageObject) -> UIImage{
         if user.photo != nil {
             return user.photo
         }else {
