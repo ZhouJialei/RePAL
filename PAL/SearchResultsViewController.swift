@@ -117,6 +117,8 @@ class SearchResultsViewController: UITableViewController {
             
             if response != nil && JSON != nil {
                 
+                println(JSON)
+                
                 // Fetch the json result to the filterArray
                 self.filterTeacherInfo = JSON as NSDictionary
                 
@@ -126,6 +128,8 @@ class SearchResultsViewController: UITableViewController {
                 self.teacherInfo.sex = self.filterTeacherInfo.objectForKey("sex") as String
                 var avatarUrl = self.filterTeacherInfo.objectForKey("head_thumb") as String
                 self.teacherInfo.avatarUrl = avatarPreAddress + avatarUrl
+                println(self.filterTeacherInfo.objectForKey("prov"))
+                
                 self.teacherInfo.area = self.filterTeacherInfo.objectForKey("prov") as String
                 self.teacherInfo.course = self.teacherArray[indexPath.row].course
                 self.teacherInfo.grade = self.teacherArray[indexPath.row].grade

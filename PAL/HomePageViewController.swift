@@ -155,6 +155,10 @@ class HomePageViewController: UIViewController, UIScrollViewDelegate, UITableVie
         self.timer.invalidate()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        removeTimer()
+    }
+    
     ////////////////////////////////////////////////////
 
     override func didReceiveMemoryWarning() {
