@@ -723,57 +723,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1636E8621AD2C8860083E355 /* image */ = {
-			isa = PBXGroup;
-			children = (
-				1636E8701AD2CE6B0083E355 /* personalViewController */,
-				1636E86D1AD2CDBE0083E355 /* ContactViewController */,
-				1636E86A1AD2CD310083E355 /* timeViewController */,
-				1636E8631AD2C8A30083E355 /* homePageController */,
-			);
-			name = image;
-			sourceTree = "<group>";
-		};
-		1636E8631AD2C8A30083E355 /* homePageController */ = {
-			isa = PBXGroup;
-			children = (
-				1636E88D1AD2D7120083E355 /* category.png */,
-				1636E88B1AD2D6CC0083E355 /* geography.png */,
-				1636E8891AD2D5B20083E355 /* physics.png */,
-				1636E8871AD2D5560083E355 /* biology.png */,
-				1636E8851AD2D51B0083E355 /* chemistry.png */,
-				1636E8831AD2D4BC0083E355 /* English.png */,
-				1636E8811AD2D4560083E355 /* chinese.png */,
-				1636E87F1AD2D3200083E355 /* math.png */,
-				1636E8681AD2CB450083E355 /* homePage.png */,
-			);
-			name = homePageController;
-			sourceTree = "<group>";
-		};
-		1636E86A1AD2CD310083E355 /* timeViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1636E86B1AD2CD4C0083E355 /* timeLine.png */,
-			);
-			name = timeViewController;
-			sourceTree = "<group>";
-		};
-		1636E86D1AD2CDBE0083E355 /* ContactViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1636E86E1AD2CDD10083E355 /* contactView.png */,
-			);
-			name = ContactViewController;
-			sourceTree = "<group>";
-		};
-		1636E8701AD2CE6B0083E355 /* personalViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1636E8711AD2CE850083E355 /* personalView.png */,
-			);
-			name = personalViewController;
-			sourceTree = "<group>";
-		};
 		1636E8C71AD407D50083E355 /* ChatOverViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,19 +782,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		16A2BB0E1ACA5B370063A1B2 /* ScrollViewsResources */ = {
-			isa = PBXGroup;
-			children = (
-				16A2BB021ACA5B320063A1B2 /* photo1.png */,
-				16A2BB031ACA5B320063A1B2 /* photo2.png */,
-				16A2BB041ACA5B320063A1B2 /* photo3.png */,
-				16A2BB051ACA5B320063A1B2 /* photo4.png */,
-				16A2BB061ACA5B320063A1B2 /* photo5.png */,
-				16A2BB071ACA5B320063A1B2 /* slow.png */,
-			);
-			name = ScrollViewsResources;
-			sourceTree = "<group>";
-		};
 		16A2BB131ACA5BB00063A1B2 /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -866,6 +802,7 @@
 		16D2E7AA1AF0D66200233974 /* PersonalViewController */ = {
 			isa = PBXGroup;
 			children = (
+				16EC578A1AF8E8C4007992F4 /* image */,
 				16D2E7AB1AF0D68600233974 /* PersonalViewController.swift */,
 				16D2E7C41AF262D400233974 /* CourseInfoCell.swift */,
 			);
@@ -875,12 +812,27 @@
 		16D2E7AD1AF1F93300233974 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				16A2BB021ACA5B320063A1B2 /* photo1.png */,
+				16A2BB031ACA5B320063A1B2 /* photo2.png */,
+				16A2BB041ACA5B320063A1B2 /* photo3.png */,
+				16A2BB051ACA5B320063A1B2 /* photo4.png */,
+				16A2BB061ACA5B320063A1B2 /* photo5.png */,
+				16A2BB071ACA5B320063A1B2 /* slow.png */,
 				16D2E7BC1AF2046000233974 /* 1.jpg */,
 				16D2E7BD1AF2046000233974 /* 2.jpg */,
 				16D2E7BE1AF2046000233974 /* 3.jpg */,
 				16D2E7B81AF2045400233974 /* 4_9.png */,
 				16D2E7B91AF2045400233974 /* available.png */,
 				16D2E7B61AF1FB6B00233974 /* recommandTeacher.png */,
+				1636E88D1AD2D7120083E355 /* category.png */,
+				1636E88B1AD2D6CC0083E355 /* geography.png */,
+				1636E8891AD2D5B20083E355 /* physics.png */,
+				1636E8871AD2D5560083E355 /* biology.png */,
+				1636E8851AD2D51B0083E355 /* chemistry.png */,
+				1636E8831AD2D4BC0083E355 /* English.png */,
+				1636E8811AD2D4560083E355 /* chinese.png */,
+				1636E87F1AD2D3200083E355 /* math.png */,
+				1636E8681AD2CB450083E355 /* homePage.png */,
 				16D2E7B41AF1FA5700233974 /* searching.png */,
 				16D2E7AE1AF1F94400233974 /* ad1_320.png */,
 				16D2E7AF1AF1F94400233974 /* ad2_320.png */,
@@ -925,6 +877,7 @@
 		16D2E7CE1AF28C7400233974 /* TimeLineViewController */ = {
 			isa = PBXGroup;
 			children = (
+				16EC578C1AF8E8F2007992F4 /* image */,
 				16D2E7CF1AF28C9500233974 /* TimeLineViewController.swift */,
 				16D2E7D11AF2EAD300233974 /* TimeLineCell.swift */,
 				16B2C07C1AF2F4BD005515EB /* TimeLineDetailController.swift */,
@@ -936,6 +889,7 @@
 		16D3059C1ADD47E40053451A /* ContactViewController */ = {
 			isa = PBXGroup;
 			children = (
+				16EC578B1AF8E8D7007992F4 /* image */,
 				16A2BB271ACA686D0063A1B2 /* YDContactsViewController.h */,
 				16A2BB281ACA686D0063A1B2 /* YDContactsViewController.m */,
 				16D3059D1ADD48520053451A /* ContactCell.h */,
@@ -977,10 +931,8 @@
 				16D554F81AC9AA3100745B93 /* Externals */,
 				16D554F41AC9A97C00745B93 /* Helpers */,
 				16D552DE1AC9A57000745B93 /* XMPP */,
-				16A2BB0E1ACA5B370063A1B2 /* ScrollViewsResources */,
 				1653E1BD1ACA977B001ACCBF /* YDAppDelegate.h */,
 				1653E1BE1ACA977B001ACCBF /* YDAppDelegate.m */,
-				1636E8621AD2C8860083E355 /* image */,
 				16A2BB141ACA5ECD0063A1B2 /* LaunchScreen.xib */,
 				16A2BAEF1ACA5AF60063A1B2 /* Main.storyboard */,
 				16D552C51AC9A46A00745B93 /* Images.xcassets */,
@@ -2001,6 +1953,30 @@
 				1636E8C71AD407D50083E355 /* ChatOverViewController */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		16EC578A1AF8E8C4007992F4 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				1636E8711AD2CE850083E355 /* personalView.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+		16EC578B1AF8E8D7007992F4 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				1636E86E1AD2CDD10083E355 /* contactView.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+		16EC578C1AF8E8F2007992F4 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				1636E86B1AD2CD4C0083E355 /* timeLine.png */,
+			);
+			name = image;
 			sourceTree = "<group>";
 		};
 		48275B567EBA05D191D9180C /* Frameworks */ = {

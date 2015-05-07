@@ -23,6 +23,7 @@
 #import "YDSignInViewController.h"
 #import "KeychainItemWrapper.h"
 #import "YDChatOverViewController.h"
+#import <AFNetworking.h>
 // Log levels: off, error, warn, info, verbose
 #if DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -59,13 +60,45 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
-
+@synthesize isLogged;
 
 //xmpp连接顺序
 //connect() -> connectWithTimeOut() -> 成功则调用 socketDidConnect() -> 若不建立安全链接 xmppStreamDidConnect()
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //完成预登陆
+    //1.从userdefault和keychainitem中取得数据
+    NSString *userStr = [[NSUserDefaults standardUserDefaults] objectForKey:kXMPPmyJID];
+    NSString *domain = [NSString stringWithFormat:@"@%@",kXMPPServer];
+    NSString *userName = [userStr stringByReplacingOccurrencesOfString:domain withString:@""];
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"YDCHAT" accessGroup:nil];
+    NSString *userpwd = [keychain objectForKey:(__bridge id)(kSecValueData)];
+    
+    if (userName != nil && userpwd != nil) {
+        //发送请求登陆
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+        NSURL *URL = [NSURL URLWithString:@"http://192.168.1.11/pal_studio/index.php/Wap/Login/login.html"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error){
+        if (error) {
+            NSLog(@"Error: %@", error);
+        }else {
+            NSLog(@"%@ %@", response, responseObject);
+        }
+        NSDictionary *JSON = (NSDictionary *)responseObject;
+        //将返回值赋予isLogged
+        self.isLogged = (int)[JSON objectForKey:@"status"];
+    }];
+    [dataTask resume];
+    }else {
+        self.isLogged = -1;
+    }
+
+    
     // Configure logging framework
 	[DDLog addLogger:[DDTTYLogger sharedInstance]];
     // Setup the XMPP stream
@@ -102,12 +135,13 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [self.window makeKeyAndVisible];
     //
      */
+#pragma mark TODO 预登陆主服务器或im服务器失败之后的工作
     if (![self connect])
         {
         
-        signinViewController= [[YDSignInViewController alloc]init];
-        signinViewController.delegate=self;
-        [self.navigationController pushViewController:signinViewController animated:NO];
+//        signinViewController= [[YDSignInViewController alloc]init];
+//        signinViewController.delegate=self;
+//        [self.navigationController pushViewController:signinViewController animated:NO];
         }
     
     return YES;
@@ -141,6 +175,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 #pragma mark Private
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//XMPPFramework,初始化xmppStream，启动各模块
 - (void)setupStream
 {
 	NSAssert(self.xmppStream == nil, @"Method setupStream invoked multiple times");
@@ -262,7 +297,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 	allowSelfSignedCertificates = NO;
 	allowSSLHostNameMismatch = NO;
 }
-
+//dealloc xmppStream，关闭XMPP服务
 - (void)teardownStream
 {
 	[self.xmppStream removeDelegate:self];
@@ -298,6 +333,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 // For more information on working with XML elements, see the Wiki article:
 // https://github.com/robbiehanson/XMPPFramework/wiki/WorkingWithElements
 
+//向服务器发送presence说明本机im已经available
 - (void)goOnline
 {
 	XMPPPresence *presence = [XMPPPresence presence]; // type="available" is implicit
@@ -315,7 +351,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         }
 	
 	[[self xmppStream] sendElement:presence];
-    [self.rootViewController updateStatus:@"Online"];
+//    [self.rootViewController updateStatus:@"Online"];
 }
 
 - (void)goOffline
@@ -332,9 +368,11 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (BOOL)connect
 {
+    //若isDisconnected返回NO，则已经连接
 	if (![self.xmppStream isDisconnected]) {
 		return YES;
 	}
+    //获取jid与password
     NSString *myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
     KeychainItemWrapper* keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"YDCHAT" accessGroup:nil];
  	NSString *myPassword = [keychain objectForKey:(__bridge id)kSecValueData];
@@ -346,7 +384,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 	//
 	// myJID = @"user@gmail.com/xmppframework";
 	// myPassword = @"";
-	
+	//若本机未存储jid或者password，则须在登陆页面重新输入并存储
 	if (myJID == nil || myPassword == nil) {
 		return NO;
 	}

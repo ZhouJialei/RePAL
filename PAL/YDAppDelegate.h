@@ -21,6 +21,9 @@
 	
 	BOOL isXmppConnected;
 }
+//是否已经登陆
+@property int isLogged;
+
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic)  UINavigationController* navigationController;
 @property (strong,nonatomic)  YDHomeViewController *rootViewController;
